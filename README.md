@@ -29,23 +29,8 @@ For this deliverable, you will need to modify the readme file and add responses 
 - Describe the need and purpose of the application
 - Intended target audience
 - Identify the various pages your application will have and describe what users will be able to accomplish
-- Identify three goals of the application
-    1. Provide the public with the widest collection of books and reading materials from physical to digital collections. 
-
-    2. Provide the public with user-friendly interface, comprehensive search engines and reviews to enhance online shopping experience. 
-
-    3. Provide affordable prices to budget-conscious readers, especially to students in order to attract dedicated customer base community.  
-
+- Identify three goals of the application  
 - Identify tools/software you will use to complete the project. 
-    1. HTML 
-
-    2. CSS 
-
-    3. Javascript 
-
-    4. Visual Studio Code 
-
-    5. SQL Database 
     
 * I suggest using an online coding environment that will allow your team to work collaboratively and practice git commands.  A few are listed below.
    - [CodeSandbox.io](https://codesandbox.io/)
