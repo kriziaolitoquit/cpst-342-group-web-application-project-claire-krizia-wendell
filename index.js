@@ -3,3 +3,10 @@ function bookOfTheMonth(bookName) {
 }
 
 bookOfTheMonth("Hidden Potential by Adam Grant");
+
+
+function lookingFor(bookTitle){
+    console.log("We have " + bookTitle + " in stock.")
+}
+
+lookingFor("House of Leaves");
