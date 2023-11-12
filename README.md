@@ -31,7 +31,9 @@ For this deliverable, you will need to modify the readme file and add responses 
 
 - Description of application *Describe how someone will use your application
   1. A digital library where you can rent both digital and physical books for certain periods of time.
+
   2. A marketplace to buy and sell new and used books. 
+  
   3. A database of places that sell a particular book and has all the prices that sell that book. 
 
 - Describe the need and purpose of the application
