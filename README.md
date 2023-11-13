@@ -35,8 +35,50 @@ For this deliverable, you will need to modify the readme file and add responses 
   3. A database of places that sell a particular book and has all the prices that sell that book. 
 
 - Describe the need and purpose of the application
+
+  - A digital library where you can rent both digital and physical books for certain periods of time. 
+
+  - A marketplace to buy and sell new and used books.  
+
+  - A database of places that sell a particular book and has all the prices that sell that book.  
+
 - Intended target audience
+  - A place like an app like Chegg and book scouter that caters to all   readers instead of just students.  
+  
+  - It would offer a vast variety of books for reading throughout the day and the best times at night. 
+
 - Identify the various pages your application will have and describe what users will be able to accomplish
+
+    - Homepage – audience will be able to see different categories. This  includes the following: 
+
+    - Format - easy search on what kind of book the reader needed. 
+
+      1. Paperback 
+
+      2.  Hardcover 
+
+      3. Online Edition 
+
+      4. Rent/Buy 
+
+    - Books – easy search on what type of book the reader wants. 
+
+      1. Academic Books 
+
+      2. Fiction 
+
+      3. Non-Fiction 
+
+    - About Us 
+
+      1. How we come up with this website 
+
+      2. Contact details 
+
+      3. Work hours operation 
+
+  - Search Engine – enables customers to locate books via authors, title, departments 
+
 - Identify three goals of the application 
     1. Provide the public with the widest collection of books and reading materials from physical to digital collections. 
 
@@ -54,6 +96,7 @@ For this deliverable, you will need to modify the readme file and add responses 
     4. Visual Studio Code 
 
     5. SQL Database
+    
 * I suggest using an online coding environment that will allow your team to work collaboratively and practice git commands.  A few are listed below.
    - [CodeSandbox.io](https://codesandbox.io/)
    - [Replit.com](https://replit.com/)
