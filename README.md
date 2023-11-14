@@ -102,6 +102,7 @@ For this deliverable, you will need to modify the readme file and add responses 
    - [Replit.com](https://replit.com/)
    - [GitHub Codespaces](https://github.com/features/codespaces)
      - Click [here](https://docs.github.com/en/codespaces/developing-in-a-codespace/working-collaboratively-in-a-codespace) for information on using codespaces to collaborate with group members. 
+      Our team will use GitHub and Codespaces to make progress on the requirements.
 
 ### Deliverable 2 (10 Points)
 For this deliverable, you will demonstrate your understanding of modules and JavaScript.  Listed below are tasks you will need to complete to satisfy the requirements for this deliverable.
