@@ -1,24 +1,18 @@
-bookOfTheMonth("Hidden Potential by Adam Grant");
+const express = require('express')
+const app = express()
+const port = 3000
 
-function bookOfTheMonth(bookName) {
-    console.log("The book of the month is " + bookName + ".");
-}
+//for our files, css, pictures and pdfs//
+app.use(express.static('assets'))
 
-function bookSearchFunction(){
-    var listOfBooks = ["Hamlet", "GooseBumps", "Rise"];
-    var foundBook = "";
-     for(var i = 0; i < listOfBooks.length; i++){
-        if(book == listOfBooks[i] ){
-            foundBook  = listOfBooks[i];
-            i = listOfBooks.length;
-        }
-     }
-    return book;
-}
+//view templateing setup//
+app.set('view engine', 'html');
 
+//for any html extentions we may need//
+app.engine('html', require('hbs').__express);
 
-function lookingFor(bookTitle){
-    console.log("We have " + bookTitle + " in stock.")
-}
+// parse application/json
+app.use(express.json());
 
-lookingFor("House of Leaves");
+// For parsing application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: true }));
