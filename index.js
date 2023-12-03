@@ -1,7 +1,28 @@
-const express = require('express')
+const express = require('express');
+const axios = require('axios');
 const dbOperations = require('./database.js');
-const app = express()
+const app = express();
 const port = 3000
+
+// Define a route that makes a call to an external REST API
+app.get('/external-api', async (req, res) => {
+    try {
+      
+      const apiUrl = 'https://openlibrary.org/search.json?q=the+lord+of+the+rings';
+      
+      // Make a GET request to the external API
+      const response = await axios.get(apiUrl);
+  
+      // Extract data from the API response
+      const apiData = response.data;
+  
+      // Send the API data as a JSON response to the client
+      res.json(apiData);
+    } catch (error) {
+      console.error('Error calling external API:', error.message);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
 
 //for our files, css, pictures and pdfs//
 app.use(express.static('assets'))
