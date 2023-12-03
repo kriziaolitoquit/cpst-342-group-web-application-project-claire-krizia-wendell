@@ -23,6 +23,8 @@ app.get('/', function (req, res) {
 	
 	dbOperations.getAllItems(res);
 
+    res.render('home.hbs', {title: "title of site"})
+
 })
 
 //create search function
@@ -100,6 +102,12 @@ function clearList(){
     }
 }
 
+//Route to product page
+
+app.get('/', function(req, res){
+    res.render('product.hbs');
+})
+
 
 //Route to load product data
 app.get("/", (req, res) => {
@@ -169,3 +177,21 @@ app.get ('/remove_item', (req, res) => {
 
     res.redirect("/");
 })
+
+//Route to Contact page
+app.get ('/' function(res, req){
+    res.render(contact.hbs)
+})
+
+//contact method 
+
+app.get('/submit', (req, res) => {
+    // the statement below assigns the paramters passed from the from via the name attribute to the variable formInfo.  
+    var formInfo = req.query;
+
+    // the second argument passes data back to the 
+    res.render('confirmation', {name : formInfo.fname, contact_method: formInfo.preferred_method})
+ })
+
+app.listen(port, () => console.log(`Digital Book Corner App listening on port ${port}!`))
+
