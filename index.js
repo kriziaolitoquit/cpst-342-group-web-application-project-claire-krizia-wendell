@@ -55,7 +55,7 @@ app.post ('/add_cart', (req, res) => {
     {
         if (req.session.cart[i].product_id === product_id)
         {
-            request.seesion.cart[i].quantity += 1;
+            request.session.cart[i].quantity += 1;
 
             count++;
         }
@@ -70,7 +70,7 @@ app.post ('/add_cart', (req, res) => {
             quantity : 1
         };
 
-        req.seesion,cart.push(car_data);
+        req.session,cart.push(car_data);
     }
 
     response.redirect("/");
