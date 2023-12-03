@@ -21,9 +21,9 @@ app.use(express.urlencoded({ extended: true }));
 //Route to home
 app.get('/', function (req, res) {
 	
-	dbOperations.getAllItems(res);
+	dbOperations.getAllBookTitles(res);
 
-    res.render('home.hbs', {title: "title of site"})
+    res.render('home.hbs', {title: "The Digital Book Corner"})
 
 })
 
@@ -69,7 +69,7 @@ searchInput.addEventListener("input", (e) =>{
     }
 })
 
-//creating and declaing a fuchtion for a setlist
+//creating and declaring a function for a setlist
 function setList(results){
     for (const person of results){
         // creating a li element for each result item
@@ -179,13 +179,13 @@ app.get ('/remove_item', (req, res) => {
 })
 
 //Route to Contact page
-app.get ('/contact' , function(res, req) {
-    res.render(contact.hbs)
+app.get ('/contact' , function(req, res) {
+    res.render('contact.hbs')
 })
 
 //contact method 
 
-app.get('/submit', function (req, res) => {
+app.get('/submit', (req, res) => {
     // the statement below assigns the parameters passed from the from via the name attribute to the variable formInfo.  
     var formInfo = req.query;
 
