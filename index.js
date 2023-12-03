@@ -25,6 +25,64 @@ app.get('/', function (req, res) {
 
 })
 
+//create search function
+
+const searchInput = document.querySelector('.input')
+
+//event listener for search function 
+
+searchInput.addEventListener("input", (e) =>{
+
+    //declare event target
+    let value = e.target.value
+
+    //check if input exists
+    if (value && value.trim().length> 0){
+        
+        value = value.trim().toLowerCase()
+
+        setList(people.filter(person => {
+            return person.name.includes(value)
+        }))
+    } else{
+        // return nothing
+        clearList()
+    }
+})
+
+//creating and declaing a fuchtion for a setlist
+function setList(results){
+    for (const person of results){
+        // creating a li element for each result item
+        const resultItem = document.createElement('li')
+
+        // adding a class to each item of the results
+        resultItem.classList.add('result-item')
+
+        // grabbing the name of the current point of the loop and adding the name as the list item's text
+        const text = document.createTextNode(person.name)
+
+        // appending the text to the result item
+        resultItem.appendChild(text)
+
+        // appending the result item to the list
+        list.appendChild(resultItem)
+    }
+}
+
+const clearButton = document.getElementById('clear')
+
+clearButton.addEventListener("click", () =>{
+
+})
+
+function clearList(){
+    // looping through each child of the search results list and remove each child
+    while (list.firstChild){
+        list.removeChild(list.firstChild)
+    }
+}
+
 
 //Route to load product data
 app.get("/", (req, res) => {
