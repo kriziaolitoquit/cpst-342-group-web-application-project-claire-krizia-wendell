@@ -41,8 +41,8 @@ searchInput.addEventListener("input", (e) =>{
         
         value = value.trim().toLowerCase()
 
-        setList(people.filter(person => {
-            return person.name.includes(value)
+        setList(product_id.filter(person => {
+            return product_id.product_name.includes(value)
         }))
     } else{
         // return nothing
@@ -60,7 +60,7 @@ function setList(results){
         resultItem.classList.add('result-item')
 
         // grabbing the name of the current point of the loop and adding the name as the list item's text
-        const text = document.createTextNode(person.name)
+        const text = document.createTextNode(product_id.product_name)
 
         // appending the text to the result item
         resultItem.appendChild(text)
@@ -94,7 +94,7 @@ app.get("/", (req, res) => {
             req.session.cart = [];
         }
 
-        response.reder('product', { products : result, cart : request.session.cart});
+        response.reder('product', { products : result, cart : req.session.cart});
     });
 });
 
