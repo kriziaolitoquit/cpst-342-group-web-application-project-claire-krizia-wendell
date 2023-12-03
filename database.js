@@ -31,5 +31,78 @@ let getAllBookTitles = (res) => {
     })
 }
 
+//Display a specific book
+let getSpecificBook = (BookTitle, res) => {
+  var searchBook = 'SELECT BookTitle, Author FROM bookList WHERE BookTitle LIKE ?';
 
-module.exports = {getAllBookTitles}
+  var params = [`%${BookTitle}%`];
+  db.all(searchBook, params, function(err, rows){
+    if (err) {
+      throw err;
+    } else {
+      console.log(rows);
+      res.render('home', { rows });
+    }
+  });
+};
+
+//Insert a book into the database
+let createBook= (BookTitle, Author, Genre, PublishedYear, NumberOfCopies, res) =>{
+  var createBookItem = 'INSERT INTO bookList (BookTitle, Author, Genre, PublishedYear, NumberOfCopies) VALUES (?,?,?,?,?)'; //Parameterized Query
+  var params = [BookTitle, Author, Genre, PublishedYear, NumberOfCopies];
+  
+  db.run(createBookItem, params, function(err){
+
+      if(err){
+          return console.log(err.message);
+      }
+      
+      console.log("Book Item Created");
+      console.log(`Rows inserted ${this.changes}`);
+
+      getAllBookTitles(res);
+  })
+}
+
+
+//Delete a book item
+let deleteBook = (recordToDelete, res) =>{
+    
+  var deleteBookItem = 'DELETE FROM bookList WHERE itemID = ?';
+
+  var params = [recordToDelete];
+
+db.run(deleteBookItem, params, function(err){
+  if (err){
+    return console.log(err.message);
+  }
+  
+
+  console.log("Book Item Deleted");
+  console.log(`Rows deleted ${this.changes}`);	  
+});
+
+getAllBookTitles(res);
+}
+
+//Update a Grocery List Item
+let updateBook = (BookTitle, Author, Genre, PublishedYear, NumberOfCopies, res) =>{
+
+  var updateBookItem = 'UPDATE bookList SET BookTitle = ?, Author = ?, Genre = ?, PublishedYear = ?, NumberOfCopies =?';
+
+  var params = [BookTitle, Author, Genre, PublishedYear, NumberOfCopies];
+
+  db.run(updateBookItem, params, function(err){
+      if(err){
+          return console.log(err.message);
+      }
+      
+      console.log("Book Item Updated");
+      console.log(`Rows updated ${this.changes}`);
+      getAllBookTitles(res);
+      
+  })
+  
+}
+
+module.exports = {getAllBookTitles, getSpecificBook, createBook, deleteBook, updateBook}
