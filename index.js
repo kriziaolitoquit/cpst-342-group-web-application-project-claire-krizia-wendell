@@ -41,9 +41,26 @@ searchInput.addEventListener("input", (e) =>{
         
         value = value.trim().toLowerCase()
 
-        setList(product_id.filter(person => {
-            return product_id.product_name.includes(value)
+        setList(bookList.filter(BookTitle => {
+            return bookList.BookTitle.includes(value)
         }))
+
+        setList(bookList.filter(Author => {
+            return bookList.BookTitle.includes(value)
+        }))
+
+        setList(bookList.filter(Genre => {
+            return bookList.Genre.includes(value)
+        }))
+
+        setList(bookList.filter(PublishedYear => {
+            return bookList.PublishedYear.include(value)
+        }))
+
+        setList(bookList.filter(NumberOfCopies => {
+            return bookList.NumberOfCopies.include(value)
+        }))
+
     } else{
         // return nothing
         clearList()
@@ -60,7 +77,7 @@ function setList(results){
         resultItem.classList.add('result-item')
 
         // grabbing the name of the current point of the loop and adding the name as the list item's text
-        const text = document.createTextNode(product_id.product_name)
+        const text = document.createTextNode(bookList)
 
         // appending the text to the result item
         resultItem.appendChild(text)
@@ -101,17 +118,19 @@ app.get("/", (req, res) => {
 //Create Route for Add Item into Cart
 app.post ('/add_cart', (req, res) => {
 
-    const product_id = req.body.product_id;
+    const ID = req.body.product_ID;
 
-    const product_name = req.body.product_name; 
+    const BookTitle = req.body.BookTitle; 
 
-    const product_price = req.body.product_price;
+    const Author = req.body.Author;
+
+    const book_price = req.body.book_price;
 
     let count= 0;
 
     for(let i = 0; i < req.session.cart.length; i++)
     {
-        if (req.session.cart[i].product_id === product_id)
+        if (req.session.cart[i].ID === ID)
         {
             request.session.cart[i].quantity += 1;
 
@@ -122,9 +141,10 @@ app.post ('/add_cart', (req, res) => {
     if(count === 0)
     {
         const cart_data ={
-            product_id : product_id, 
-            product_name : product_name, 
-            product_price : parseFloat(parduct_price),
+            ID : ID, 
+            BookTitle : BookTitle, 
+            Author : Author,
+            book_price_price : parseFloat(book_price_price),
             quantity : 1
         };
 
@@ -137,7 +157,7 @@ app.post ('/add_cart', (req, res) => {
 //Route to Remove Item form cart
 app.get ('/remove_item', (req, res) => {
 
-    const product_id = req.query.id;
+    const ID = req.query.ID;
 
     for(let i = 0; i < req.session.cart.length; i++)
     {
