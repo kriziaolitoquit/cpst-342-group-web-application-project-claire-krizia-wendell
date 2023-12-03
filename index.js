@@ -7,10 +7,10 @@ const port = 3000
 app.use(express.static('assets'))
 
 //view templateing setup//
-app.set('view engine', 'html');
+app.set('view engine', 'hbs');
 
 //for any html extentions we may need//
-app.engine('html', require('hbs').__express);
+app.engine('views', require('hbs').__express);
 
 // parse application/json
 app.use(express.json());
@@ -105,7 +105,7 @@ function clearList(){
 //Route to product page
 
 app.get('/', function(req, res){
-    res.render('product.hbs');
+    res.render('home.hbs');
 })
 
 
@@ -179,17 +179,17 @@ app.get ('/remove_item', (req, res) => {
 })
 
 //Route to Contact page
-app.get ('/' function(res, req){
+app.get ('/contact' , function(res, req) {
     res.render(contact.hbs)
 })
 
 //contact method 
 
-app.get('/submit', (req, res) => {
-    // the statement below assigns the paramters passed from the from via the name attribute to the variable formInfo.  
+app.get('/submit', function (req, res) => {
+    // the statement below assigns the parameters passed from the from via the name attribute to the variable formInfo.  
     var formInfo = req.query;
 
-    // the second argument passes data back to the 
+    // the second argument passes data back to the form
     res.render('confirmation', {name : formInfo.fname, contact_method: formInfo.preferred_method})
  })
 

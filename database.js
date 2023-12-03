@@ -14,8 +14,22 @@ let db = new sqlite3.Database('./booksdb.db', sqlite3.OPEN_READWRITE, (err) => {
 });
 
 
-//Route to search for a book
-//Route to get all the list of books
-//Route to add item to cart
-//Route to delete item from cart
-//Route to update number of copies from cart
+//Display all books
+let getAllBookTitles = (res) => {
+    var getAllBookItems = 'SELECT Id, BookTitle, Author, Genre, PublishedYear, NumberOfCopies FROM bookList';
+    db.all(getAllBookItems, function(err, rows){
+        if (err) {
+         
+            throw err;
+          }
+          /*rows.forEach((row) => {
+            console.log(row.item_name);
+          });*/
+          console.log(rows);
+          res.render('home', {rows})
+
+    })
+}
+
+
+module.exports = {getAllBookTitles}

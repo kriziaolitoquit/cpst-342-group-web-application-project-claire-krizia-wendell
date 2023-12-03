@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>The Digital Book Corner</title>
+		<meta charset="utf-8" />
+        <meta name="description" content="Digital Book Library">
+        <meta name="keywords" content="library, books, digital, academic, fiction, non-fiction">
+        <meta name="author" content="Krizia Olitoquit, Claire Hooper, Robbie Anderson">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	</head>
+    <body>
+        
+        <h1>Title of the Book</h1>
+         {{#each rows}}
+            <p>Book Title: {{this.bookTitle}}</p>
+            <p>Author: {{this.Author}}</p>
+            <p>Published Year: {{this.PublishedYear}}</p>
+            <p>No. of Copies: {{this.NumberOfCopies}}</p>
+        {{/each}}
+    </body>
+
+</html>
