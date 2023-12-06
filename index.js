@@ -8,11 +8,11 @@ const port = 3000
 app.get('/external-api', async (req, res) => {
     try {
       
-      const apiUrl = 'https://openlibrary.org/search.json?q=the+lord+of+the+rings';
+      const apiUrl = 'https://656aa013dac3630cf7272f11.mockapi.io/api/v1/books';
       
       // Make a GET request to the external API
       const response = await axios.get(apiUrl);
-  
+
       // Extract data from the API response
       const apiData = response.data;
   
