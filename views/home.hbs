@@ -52,6 +52,21 @@
             <label for="Kids">Kids</label><br>
             <input type="submit" class="demographic" value="submit">
         </form>
+
+        <form action="/search_year" method="POST">
+            <input type="radio" id="0-2000" name="yearrange" value="0-2000">
+            <label for="0-2000">Before 2000</label><br>
+            <input type="radio" id="2001-2010" name="yearrange" value="2001-2010">
+            <label for="2001-2010">2001 - 2010</label><br>
+            <input type="radio" id="2011-2020" name="yearrange" value="2011-2020">
+            <label for="2011-2020">2011 - 2020</label><br>
+            <input type="radio" id="2021-2030" name="yearrange" value="2021-2030">
+            <label for="2021-2030">2021 and Beyond</label><br>
+        </form>
+
+        <form action="/search_price" method="POST">
+            <input type="range" min="$0-$10" max="$100+" value="50" class="slider" id="price">
+        </form>
         
         <h1>The Digital Book Corner</h1>
          {{#each rows}}

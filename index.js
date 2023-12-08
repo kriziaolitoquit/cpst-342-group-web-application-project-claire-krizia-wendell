@@ -50,21 +50,60 @@ app.post('/search_item', function (req, res) {
 
 })
 
+//route to home request for genre radio
 app.post('/search_genre', function(req,res){
     var genreEntry = req.body;
 
     dbOperations.getGenreBookList(genreEntry, res);
 })
 
+
+//route to home request for demographics radio
 app.post('/search_demographics', function(req,res){
     var  demographicsEntry = req.body;
 
     dbOperations.getDemographicsBookList(demographicsEntry, res);
 })
 
+//route to home request for year radio
+
+app.post('/search_year', function(req, res){
+    var yearEntry = req.body;
+
+    dbOperations.getSmallestYearBookList(yearEntry, res);
+
+    dbOperations.getSmallMidYearBookList(yearEntry, res);
+
+    dbOperations.getMidYearBookList(yearEntry, res);
+
+    dbOperations.getBigYearBookLis(yearEntry, res);
+
+})
+
+//route to home request price slider
+
+
+
 //Route to home
 app.get('/', function (req, res) {
- 
+    app.post('/search_price', function(req, res){
+        var priceEntry = req.body;
+    
+        dbOperations.getLowestPriceBookList(priceEntry, res);
+    
+        dbOperations.getLowestMidBookList(priceEntry, res);
+    
+        dbOperations.getLowMidBookList(priceEntry, res);
+    
+        dbOperations.getMidBookList(priceEntry, res);
+
+        dbOperations.getHighMidBookList(priceEntry, res);
+        
+        dbOperations.getHighBookList(priceEntry, res);
+
+        dbOperations.getHighestBookList(priceEntry, res);
+    
+    })
     res.render('home.hbs', {title: "The Digital Book Corner"})
  
 })
