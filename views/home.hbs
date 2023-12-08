@@ -14,6 +14,44 @@
             <input type="text"  name="bookName" class="form-control"  placeholder="Enter book name" size="255"><br>
             <input type="submit" class="btn btn-primary" value="submit">
         </form>
+
+        <form action="/search_genre" method="POST">
+            <input type="radio" id="biography" name="genre" value="biography">
+            <label for="biography">Biography</label><br>
+            <input type="radio" id="business" name="genre" value="business">
+            <label for="business">Business</label><br>
+            <input type="radio" id="children" name="genre" value="children">
+            <label for="children">Children</label><br>
+            <input type="radio" id="fantasy" name="genre" value="fantasy">
+            <label for="fantasy">Fantasy</label><br>
+            <input type="radio" id="fiction" name="genre" value="fiction">
+            <label for="fiction">Fiction</label><br>
+            <input type="radio" id="literature" name="genre" value="literature">
+            <label for="literature">Literature</label><br>
+            <input type="radio" id="non-fiction" name="genre" value="non-fiction">
+            <label for="non-fiction">Non-Fiction</label><br>
+            <input type="radio" id="romance" name="genre" value="romance">
+            <label for="romance">Romance</label><br>
+            <input type="radio" id="sciencefiction" name="genre" value="sciencefiction">
+            <label for="sciencefiction">Science Fiction</label><br>
+            <input type="radio" id="self-help" name="genre" value="self-help">
+            <label for="self-help">Self-Help</label><br>
+            <input type="radio" id="textbooks" name="genre" value="textbooks">
+            <label for="textbooks">Textbooks</label><br>
+            <input type="radio" id="travel" name="genre" value="travel">
+            <label for="travel">Travel</label><br>
+            <input type="submit" class="genre" value="submit">
+        </form>
+
+        <form action="/search_demographics" method="POST">
+            <input type="radio" id="Adult" name="demographic" value="Adult">
+            <label for="Adult">Adult</label><br>
+            <input type="radio" id="Teens" name="demogrphic" value="Teens">
+            <label for="Teens">Teens</label><br>
+            <input type="radio" id="Kids" name="demographic" value="Kids">
+            <label for="Kids">Kids</label><br>
+            <input type="submit" class="demographic" value="submit">
+        </form>
         
         <h1>The Digital Book Corner</h1>
          {{#each rows}}

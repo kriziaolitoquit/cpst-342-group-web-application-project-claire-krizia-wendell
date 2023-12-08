@@ -50,6 +50,18 @@ app.post('/search_item', function (req, res) {
 
 })
 
+app.post('/search_genre', function(req,res){
+    var genreEntry = req.body;
+
+    dbOperations.getGenreBookList(genreEntry, res);
+})
+
+app.post('/search_demographics', function(req,res){
+    var  demographicsEntry = req.body;
+
+    dbOperations.getDemographicsBookList(demographicsEntry, res);
+})
+
 //Route to home
 app.get('/', function (req, res) {
  

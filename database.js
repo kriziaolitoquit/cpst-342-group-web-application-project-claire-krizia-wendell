@@ -46,6 +46,40 @@ let getSpecificBook = (BookTitle, res) => {
   });
 };
 
+//Display a genre of book
+
+let getGenreBookList = (Genre, res) => {
+  var searchGenre = 'SELECT * FROM bookList WHERE Genre = (?)';
+
+  db.all(searchGenre, function(err, rows){
+    if (err) {
+      throw err;
+    } else{
+      console.log(rows);
+      res.render('home', {rows})
+    }
+  })
+}
+
+//Display a book by Demographic
+let getDemographicsBookList = (Demographics, res) => {
+  var searchDemographics = 'SELECT * FROM bookList WHERE Demographics = (?)';
+
+  db.all(searchDemographics, function(err, rows){
+    if (err) {
+      throw err;
+    } else{
+      console.log(rows);
+      res.render('home', {rows})
+    }
+  })
+}
+
+
+
+
+
+
 //Insert a book into the database
 let createBook= (BookTitle, Author, Genre, PublishedYear, NumberOfCopies, res) =>{
   var createBookItem = 'INSERT INTO bookList (BookTitle, Author, Genre, PublishedYear, NumberOfCopies) VALUES (?,?,?,?,?)'; //Parameterized Query
@@ -105,4 +139,4 @@ let updateBook = (BookTitle, Author, Genre, PublishedYear, NumberOfCopies, res) 
   
 }
 
-module.exports = {getAllBookTitles, getSpecificBook, createBook, deleteBook, updateBook}
+module.exports = {getAllBookTitles, getSpecificBook, getGenreBookList, getDemographicsBookList, createBook, deleteBook, updateBook}
