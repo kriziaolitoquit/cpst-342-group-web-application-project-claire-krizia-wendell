@@ -216,9 +216,9 @@ let getHighBookList = (Price, res) => {
   })
 }
 
-//Display book price 100+
+//Display book price $100+
 let getHighestBookList = (Price, res) => {
-  var searchHighestPriceList = 'SELECT COUNT(Id) FROM bookList WHERE Price $100<';
+  var searchHighestPriceList = 'SELECT COUNT(Id) FROM bookList WHERE Price $100 <';
 
   db.all(searchHighestPriceList, function(err, rows){
     if (err) {

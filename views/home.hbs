@@ -66,7 +66,17 @@
         </form>
 
         <form action="/search_price" method="POST">
-            <input type="range" min="$0-$10" max="$100+" value="50" class="slider" id="price">
+            <label for="price">Price Range</label>
+            <input type="range" min="0" max="100" value="50" id="price" step="20" list="pricerange">
+            <datalist id="pricerange">
+                <option>$0 - $10</option>
+                <option>$11 - $20</option>
+                <option>$21 - $35</option>
+                <option>$36 - $50</option>
+                <option>$51 - $75</option>
+                <option>$76 - $99</option>
+                <option>$100+</option>
+            </datalist>
             <input type="submit" class="slider" value="submit">
         </form>
         
