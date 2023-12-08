@@ -50,13 +50,21 @@ app.post('/search_item', function (req, res) {
 
 })
 
+//Route to home
+app.get('/', function (req, res) {
+ 
+    res.render('home.hbs', {title: "The Digital Book Corner"})
+ 
+})
+ 
+
 //create search function
 
-const searchInput = document.querySelector('.input')
+//const searchInput = document.querySelector('.input')
 
 //event listener for search function 
 
-searchInput.addEventListener("input", (e) =>{
+/*searchInput.addEventListener("input", (e) =>{
 
     //declare event target
     let value = e.target.value
@@ -129,7 +137,7 @@ function clearList(){
 
 app.get('/', function(req, res){
     res.render('home.hbs');
-})
+})*/
 
 
 //Route to load product data
@@ -147,7 +155,7 @@ app.get("/", (req, res) => {
 });
 
 //Create Route for Add Item into Cart
-app.post ('/add_cart', (req, res) => {
+/*app.post ('/add_cart', (req, res) => {
 
     const ID = req.body.product_ID;
 
@@ -183,7 +191,7 @@ app.post ('/add_cart', (req, res) => {
     }
 
     response.redirect("/");
-})
+})*/
 
 //Route to Remove Item form cart
 app.get ('/remove_item', (req, res) => {
