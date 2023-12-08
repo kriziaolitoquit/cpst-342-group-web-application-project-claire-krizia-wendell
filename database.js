@@ -33,10 +33,10 @@ let getAllBookTitles = (res) => {
 
 //Display a specific book
 let getSpecificBook = (BookTitle, res) => {
-  var searchBook = 'SELECT BookTitle, Author FROM bookList WHERE BookTitle LIKE ?';
+  var searchBook = `SELECT BookTitle, Author, PublishedYear FROM bookList WHERE BookTitle LIKE '%${BookTitle}%'`;
+  //var bookTitleWildcard = `%${BookTitle}%`;
 
-  var params = [`%${BookTitle}%`];
-  db.all(searchBook, params, function(err, rows){
+  db.all(searchBook, function(err, rows) {
     if (err) {
       throw err;
     } else {
