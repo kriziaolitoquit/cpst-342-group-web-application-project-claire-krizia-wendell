@@ -9,13 +9,17 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	</head>
     <body>
+
+        <form action="/search_item" method="POST">
+            <input type="text"  name="bookName" class="form-control"  placeholder="Enter book name" size="255"><br>
+            <input type="submit" class="btn btn-primary" value="submit">
+        </form>
         
         <h1>The Digital Book Corner</h1>
          {{#each rows}}
             <p>Book Title: {{this.bookTitle}}</p>
             <p>Author: {{this.Author}}</p>
             <p>Published Year: {{this.PublishedYear}}</p>
-            <p>No. of Copies: {{this.NumberOfCopies}}</p>
         {{/each}}
     </body>
 

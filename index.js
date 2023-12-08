@@ -40,11 +40,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //Route to home
-app.get('/', function (req, res) {
-	
-	dbOperations.getAllBookTitles(res);
+app.post('/search_item', function (req, res) {
 
-    res.render('home.hbs', {title: "The Digital Book Corner"})
+    var bookEntry = req.body;
+	
+	dbOperations.getSpecificBook(bookEntry, res);
+
+    //res.render('home.hbs', {title: "The Digital Book Corner"})
 
 })
 
