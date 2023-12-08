@@ -76,7 +76,7 @@ app.post('/search_year', function(req, res){
 
     dbOperations.getMidYearBookList(yearEntry, res);
 
-    dbOperations.getBigYearBookLis(yearEntry, res);
+    dbOperations.getBigYearBookList(yearEntry, res);
 
 })
 

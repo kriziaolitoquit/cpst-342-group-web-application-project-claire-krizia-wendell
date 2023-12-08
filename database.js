@@ -47,11 +47,11 @@ let getSpecificBook = (BookTitle, res) => {
 };
 
 //Display a genre of book
-
+ 
 let getGenreBookList = (Genre, res) => {
   var searchGenre = 'SELECT * FROM bookList WHERE Genre = (?)';
-
-  db.all(searchGenre, function(err, rows){
+  var params= [Genre];
+  db.all(searchGenre, Genre, function(err, rows){
     if (err) {
       throw err;
     } else{
@@ -64,8 +64,8 @@ let getGenreBookList = (Genre, res) => {
 //Display a book by Demographic
 let getDemographicsBookList = (Demographics, res) => {
   var searchDemographics = 'SELECT * FROM bookList WHERE Demographics = (?)';
-
-  db.all(searchDemographics, function(err, rows){
+  var params= [Demographics];
+  db.all(searchDemographics, Demographics, function(err, rows){
     if (err) {
       throw err;
     } else{
@@ -77,7 +77,7 @@ let getDemographicsBookList = (Demographics, res) => {
 
 //Display book release dates by range of <2000
 let getSmallestYearBookList = (PublishedYear, res) => {
-  var searchSmallYear = 'SELECT * FROM bookList FROM PublishedYear BETWEEN 0 AND 2000';
+  var searchSmallYear = 'SELECT * FROM bookList WHERE PublishedYear BETWEEN 0 AND 2000';
 
   db.all(searchSmallYear, function(err, rows){
     if (err) {
@@ -92,9 +92,9 @@ let getSmallestYearBookList = (PublishedYear, res) => {
 
 //Display book release dates by range of 2001 - 2010
 let getSmallMidYearBookList = (PublishedYear, res) => {
-  var searchSmallMidYear = 'SELECT * FROM bookList FROM PublishedYear BETWEEN 2001 AND 2010';
+  var searchSmallMidYear = 'SELECT * FROM bookList WHERE PublishedYear BETWEEN 2001 AND 2010';
 
-  db.all(searchSmallMidYear , function(err, rows){
+  db.all(searchSmallMidYear, function(err, rows){
     if (err) {
       throw err;
     } else{
@@ -106,9 +106,9 @@ let getSmallMidYearBookList = (PublishedYear, res) => {
 
 //Display book release dates by range of 2011 - 2020
 let getMidYearBookList = (PublishedYear, res) => {
-  var searchMidYear = 'SELECT * FROM bookList FROM PublishedYear BETWEEN 2011 AND 2020';
+  var searchMidYear = 'SELECT * FROM bookList WHERE PublishedYear BETWEEN 2011 AND 2020';
 
-  db.all(searchMidYear , function(err, rows){
+  db.all(searchMidYear, function(err, rows){
     if (err) {
       throw err;
     } else{
@@ -118,11 +118,11 @@ let getMidYearBookList = (PublishedYear, res) => {
   })
 }
 
-//Display book release dates by range of 2011 - 2020
+//Display book release dates by range of 2021 and beyond
 let getBigYearBookList = (PublishedYear, res) => {
-  var searchBigYear = 'SELECT * FROM bookList FROM PublishedYear BETWEEN 2021 AND 2030';
+  var searchBigYear = 'SELECT * FROM bookList WHERE PublishedYear BETWEEN 2021 AND 2030';
 
-  db.all(searchBigYear , function(err, rows){
+  db.all(searchBigYear, function(err, rows){
     if (err) {
       throw err;
     } else{
@@ -134,9 +134,9 @@ let getBigYearBookList = (PublishedYear, res) => {
 
 //Display book price $0 - $10
 let getLowestPriceBookList = (Price, res) => {
-  var searchLowestPrice = 'SELECT * FROM bookList FROM PublishedYear BETWEEN $0 AND $10';
+  var searchLowestPrice = 'SELECT * FROM bookList WHERE PublishedYear BETWEEN $0 AND $10';
 
-  db.all(searchLowestPrice , function(err, rows){
+  db.all(searchLowestPrice, function(err, rows){
     if (err) {
       throw err;
     } else{
@@ -148,9 +148,9 @@ let getLowestPriceBookList = (Price, res) => {
 
 //Display book price $11 - $20
 let getLowestMidBookList = (Price, res) => {
-  var searchLowestMidPriceList = 'SELECT * FROM bookList FROM PublishedYear BETWEEN $11 AND $20';
+  var searchLowestMidPriceList = 'SELECT * FROM bookList WHERE PublishedYear BETWEEN $11 AND $20';
 
-  db.all(searchLowestMidPriceList , function(err, rows){
+  db.all(searchLowestMidPriceList, function(err, rows){
     if (err) {
       throw err;
     } else{
@@ -162,9 +162,9 @@ let getLowestMidBookList = (Price, res) => {
 
 //Display book price $21 - $35
 let getLowMidBookList = (Price, res) => {
-  var searchLowMidPriceList = 'SELECT * FROM bookList FROM PublishedYear BETWEEN $21 AND $35';
+  var searchLowMidPriceList = 'SELECT * FROM bookList WHERE PublishedYear BETWEEN $21 AND $35';
 
-  db.all(searchLowMidPriceList , function(err, rows){
+  db.all(searchLowMidPriceList, function(err, rows){
     if (err) {
       throw err;
     } else{
@@ -176,7 +176,7 @@ let getLowMidBookList = (Price, res) => {
 
 //Display book price $36 - $50
 let getMidBookList = (Price, res) => {
-  var searchMidPriceList = 'SELECT * FROM bookList FROM PublishedYear BETWEEN $36 AND $50';
+  var searchMidPriceList = 'SELECT * FROM bookList WHERE PublishedYear BETWEEN $36 AND $50';
 
   db.all(searchMidPriceList, function(err, rows){
     if (err) {
@@ -190,7 +190,7 @@ let getMidBookList = (Price, res) => {
 
 //Display book price $51 - $75
 let getHighMidBookList = (Price, res) => {
-  var searchHighMidPriceList = 'SELECT * FROM bookList FROM PublishedYear BETWEEN $51 AND $75';
+  var searchHighMidPriceList = 'SELECT * FROM bookList WHERE PublishedYear BETWEEN $51 AND $75';
 
   db.all(searchHighMidPriceList, function(err, rows){
     if (err) {
@@ -204,7 +204,7 @@ let getHighMidBookList = (Price, res) => {
 
 //Display book price $76 - $99
 let getHighBookList = (Price, res) => {
-  var searchHighPriceList = 'SELECT * FROM bookList FROM PublishedYear BETWEEN $51 AND $75';
+  var searchHighPriceList = 'SELECT * FROM bookList WHERE PublishedYear BETWEEN $51 AND $75';
 
   db.all(searchHighPriceList, function(err, rows){
     if (err) {
@@ -218,9 +218,9 @@ let getHighBookList = (Price, res) => {
 
 //Display book price 100+
 let getHighestBookList = (Price, res) => {
-  var searchHighestPriceList = 'SELECT COUNT(Id) From bookList WHERE Price $100<';
+  var searchHighestPriceList = 'SELECT COUNT(Id) FROM bookList WHERE Price $100<';
 
-  db.all(searchHighestPriceList , function(err, rows){
+  db.all(searchHighestPriceList, function(err, rows){
     if (err) {
       throw err;
     } else{
