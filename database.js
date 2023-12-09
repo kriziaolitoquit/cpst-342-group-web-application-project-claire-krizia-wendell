@@ -16,7 +16,7 @@ let db = new sqlite3.Database('./booksdb.db', sqlite3.OPEN_READWRITE, (err) => {
 
 //Display all books
 let getAllBookTitles = (res) => {
-    var getAllBookItems = 'SELECT Id, BookTitle, Author, Genre, PublishedYear, NumberOfCopies FROM bookList';
+    var getAllBookItems = `SELECT * FROM bookList`;
     db.all(getAllBookItems, function(err, rows){
         if (err) {
          
@@ -49,31 +49,36 @@ let getSpecificBook = (BookTitle, res) => {
 //Display a genre of book
  
 let getGenreBookList = (Genre, res) => {
-  var searchGenre = 'SELECT * FROM bookList WHERE Genre = (?)';
-  var params= [Genre];
-  db.all(searchGenre, Genre, function(err, rows){
+
+  var searchGenre = `SELECT BookTitle FROM bookList WHERE Genre = ?`;
+
+  var params = [Genre];
+
+  debugger;
+
+  db.all(searchGenre, params, function(err, rows){
     if (err) {
       throw err;
     } else{
       console.log(rows);
       res.render('home', {rows})
     }
-  })
-}
+  });
+};
 
 //Display a book by Demographic
 let getDemographicsBookList = (Demographics, res) => {
-  var searchDemographics = 'SELECT * FROM bookList WHERE Demographics = (?)';
+  var searchDemographics = `SELECT * FROM bookList WHERE Demographics = ?`;
   var params= [Demographics];
-  db.all(searchDemographics, Demographics, function(err, rows){
+  db.all(searchDemographics, params, function(err, rows){
     if (err) {
       throw err;
     } else{
       console.log(rows);
       res.render('home', {rows})
     }
-  })
-}
+  });
+};
 
 //Display book release dates by range of <2000
 let getSmallestYearBookList = (PublishedYear, res) => {
