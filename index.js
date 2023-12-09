@@ -51,19 +51,22 @@ app.post('/search_item', function (req, res) {
 })
 
 //route to home request for genre radio
-app.post('/search_genre', function(req,res){
+app.post('/search_genre', function(req,res) {
+    //console.log(req.body);
+
     var genreEntry = req.body;
 
     dbOperations.getGenreBookList(genreEntry, res);
-})
+});
 
 
 //route to home request for demographics radio
 app.post('/search_demographics', function(req,res){
+
     var  demographicsEntry = req.body;
 
     dbOperations.getDemographicsBookList(demographicsEntry, res);
-})
+});
 
 //route to home request for year radio
 
@@ -78,15 +81,13 @@ app.post('/search_year', function(req, res){
 
     dbOperations.getBigYearBookList(yearEntry, res);
 
-})
+});
 
 //route to home request price slider
 
-
-
 //Route to home
 app.get('/', function (req, res) {
-    app.post('/search_price', function(req, res){
+    app.post('/search_price', function(req, res) {
         var priceEntry = req.body;
     
         dbOperations.getLowestPriceBookList(priceEntry, res);
@@ -103,10 +104,10 @@ app.get('/', function (req, res) {
 
         dbOperations.getHighestBookList(priceEntry, res);
     
-    })
-    res.render('home.hbs', {title: "The Digital Book Corner"})
+    });
+    res.render('home.hbs', {title: "The Digital Book Corner"});
  
-})
+});
  
 
 //create search function
@@ -192,7 +193,7 @@ app.get('/', function(req, res){
 
 
 //Route to load product data
-app.get("/", (req, res) => {
+/*app.get("/", (req, res) => {
     const query = `SELECT * FROM product LIMIT 3`;
 
     //Execute Query
@@ -203,7 +204,7 @@ app.get("/", (req, res) => {
 
         response.reder('product', { products : result, cart : req.session.cart});
     });
-});
+});*/
 
 //Create Route for Add Item into Cart
 /*app.post ('/add_cart', (req, res) => {
