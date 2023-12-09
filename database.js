@@ -33,10 +33,17 @@ let getAllBookTitles = (res) => {
 
 //Display a specific book
 let getSpecificBook = (BookTitle, res) => {
-  var searchBook = `SELECT BookTitle, Author, PublishedYear FROM bookList WHERE BookTitle LIKE '%${BookTitle}%'`;
-  //var bookTitleWildcard = `%${BookTitle}%`;
+  var searchBook = `SELECT * FROM bookList WHERE BookTitle LIKE ?`;
+  
+  var params = [`%${BookTitle.BookTitle}%`];
 
-  db.all(searchBook, function(err, rows) {
+  //console.log(params[0]);
+
+  //console.log(params[0].BookTitle);
+
+  var bookName = params[0]
+
+  db.all(searchBook, bookName, function(err, rows) {
     if (err) {
       throw err;
     } else {
@@ -50,13 +57,16 @@ let getSpecificBook = (BookTitle, res) => {
  
 let getGenreBookList = (Genre, res) => {
 
-  var searchGenre = `SELECT BookTitle FROM bookList WHERE Genre = ?`;
+  var searchGenre = `SELECT * FROM bookList WHERE Genre = ?`;
 
   var params = [Genre];
 
-  debugger;
+  //console.log(params);
+  //console.log(params[0].genre);
 
-  db.all(searchGenre, params, function(err, rows){
+  var genre = params[0].genre
+
+  db.all(searchGenre, genre, function(err, rows){
     if (err) {
       throw err;
     } else{
@@ -69,8 +79,14 @@ let getGenreBookList = (Genre, res) => {
 //Display a book by Demographic
 let getDemographicsBookList = (Demographics, res) => {
   var searchDemographics = `SELECT * FROM bookList WHERE Demographics = ?`;
+
   var params= [Demographics];
-  db.all(searchDemographics, params, function(err, rows){
+
+  //console.log(params);
+
+  var demographics = params[0].demographics
+
+  db.all(searchDemographics, demographics, function(err, rows){
     if (err) {
       throw err;
     } else{

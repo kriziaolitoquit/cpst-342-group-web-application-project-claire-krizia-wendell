@@ -62,10 +62,11 @@ app.post('/search_genre', function(req,res) {
 
 //route to home request for demographics radio
 app.post('/search_demographics', function(req,res){
+
     var  demographicsEntry = req.body;
 
     dbOperations.getDemographicsBookList(demographicsEntry, res);
-})
+});
 
 //route to home request for year radio
 
