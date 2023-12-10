@@ -10,11 +10,28 @@
 	</head>
     <body>
 
+        <h1>The Digital Book Corner</h1>
+
+        <div class="container mt-4">
+            {{#each rows}}
+                <div class="card mb-3">
+                <div class="card-body">
+                    <h4 class="card-title">{{this.BookTitle}}</h4>
+                    <p class="card-text">${{this.Price}}</p>
+                </div>
+                </div>
+            {{/each}}
+        </div>
+
         <form action="/search_item" method="POST">
-            <input type="text"  name="BookTitle" class="form-control"  placeholder="Enter book title" size="255"><br>
-            <input type="submit" class="btn btn-primary" value="submit">
+            <input type="search"  name="BookTitle" class="form-control rounded"  placeholder="Search" size="255" aria-label="Search" aria-describedby="search-addon" />
+            <span class="input-group-text border-0" id="search-addon">
+                <i class="fas fa-search"></i>
+            </span>
+            <input type="submit" class="btn btn-primary" value="Search">
         </form>
 
+        <h2>Genre</h2>
         <form action="/search_genre" method="POST">
             <input type="radio" id="Biography" name="genre" value="Biography">
             <label for="biography">Biography</label><br>
@@ -22,6 +39,8 @@
             <label for="business">Business</label><br>
             <input type="radio" id="Children" name="genre" value="Children">
             <label for="children">Children</label><br>
+            <input type="radio" id="Classic" name="genre" value="Classic">
+            <label for="children">Classic</label><br>
             <input type="radio" id="Fantasy" name="genre" value="Fantasy">
             <label for="fantasy">Fantasy</label><br>
             <input type="radio" id="Fiction" name="genre" value="Fiction">
@@ -32,7 +51,7 @@
             <label for="non-fiction">Non-Fiction</label><br>
             <input type="radio" id="Romance" name="genre" value="Romance">
             <label for="romance">Romance</label><br>
-            <input type="radio" id="Science_Fiction" name="genre" value="Science_Fiction">
+            <input type="radio" id="Science Fiction" name="genre" value="Science Fiction">
             <label for="sciencefiction">Science Fiction</label><br>
             <input type="radio" id="Self-Help" name="genre" value="Self-Help">
             <label for="self-help">Self-Help</label><br>
@@ -43,6 +62,7 @@
             <input type="submit" class="genre" value="submit">
         </form>
 
+        <h2>Demographics</h2>
         <form action="/search_demographics" method="POST">
             <input type="radio" id="Adult" name="demographics" value="Adult">
             <label for="Adult">Adult</label><br>
@@ -53,37 +73,23 @@
             <input type="submit" class="demographic" value="submit">
         </form>
 
+        <h2>Year Published</h2>
         <form action="/search_year" method="POST">
-            <input type="radio" id="0-2000" name="yearrange" value="0-2000">
+            <input type="radio" id="0-2000" name="yearRange" value="0,2000">
             <label for="0-2000">Before 2000</label><br>
-            <input type="radio" id="2001-2010" name="yearrange" value="2001-2010">
+
+            <input type="radio" id="2001-2010" name="yearRange" value="2001,2010">
             <label for="2001-2010">2001 - 2010</label><br>
-            <input type="radio" id="2011-2020" name="yearrange" value="2011-2020">
+
+            <input type="radio" id="2011-2020" name="yearRange" value="2011,2020">
             <label for="2011-2020">2011 - 2020</label><br>
-            <input type="radio" id="2021-2030" name="yearrange" value="2021-2030">
+
+            <input type="radio" id="2021-2030" name="yearRange" value="2021,2030">
             <label for="2021-2030">2021 and Beyond</label><br>
-            <input type="submit" class="yearrange" value="submit">
+
+            <input type="submit" class="yearRange" value="submit">
         </form>
 
-        <form action="/search_price" method="POST">
-            <label for="price">Price Range</label>
-            <input type="range" min="0" max="100" value="50" id="price" step="20" list="pricerange">
-            <datalist id="pricerange">
-                <option>$0 - $10</option>
-                <option>$11 - $20</option>
-                <option>$21 - $35</option>
-                <option>$36 - $50</option>
-                <option>$51 - $75</option>
-                <option>$76 - $99</option>
-                <option>$100+</option>
-            </datalist>
-            <input type="submit" class="slider" value="submit">
-        </form>
-        
-        <h1>The Digital Book Corner</h1>
-         {{#each rows}}
-            <p>Book Title: {{this.BookTitle}}</p>
-        {{/each}}
     </body>
 
 </html>
