@@ -29,6 +29,8 @@
                 <i class="fas fa-search"></i>
             </span>
             <input type="submit" class="btn btn-primary" value="Search">
+            <!-- "Add to Cart" button -->
+            <button type="button" class="btn btn-success" onclick="add_to_cart()">Add to Cart</button>
         </form>
 
         <h2>Genre</h2>
@@ -60,17 +62,21 @@
             <input type="radio" id="Travel" name="genre" value="Travel">
             <label for="travel">Travel</label><br>
             <input type="submit" class="genre" value="submit">
+            
         </form>
 
         <h2>Demographics</h2>
         <form action="/search_demographics" method="POST">
             <input type="radio" id="Adult" name="demographics" value="Adult">
             <label for="Adult">Adult</label><br>
+
             <input type="radio" id="Teens" name="demographics" value="Teens">
             <label for="Teens">Teens</label><br>
+
             <input type="radio" id="Kids" name="demographics" value="Kids">
             <label for="Kids">Kids</label><br>
-            <input type="submit" class="demographic" value="submit">
+
+            <input type="submit" class="demographic" value="Search">
         </form>
 
         <h2>Year Published</h2>
@@ -89,6 +95,14 @@
 
             <input type="submit" class="yearRange" value="submit">
         </form>
+
+        <script>
+ 
+            function shoppingCart(){
+                window.location = '/shoppingCart';
+            }
+        
+        </script>
 
     </body>
 

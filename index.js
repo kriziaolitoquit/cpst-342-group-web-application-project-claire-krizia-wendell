@@ -197,18 +197,18 @@ app.get('/', function(req, res){
     });
 });*/
 
-//Create Route for Add Item into Cart
-/*app.post ('/add_cart', (req, res) => {
+//Route to Shopping Cart
+app.post ('/add_cart', (req, res) => {
 
-    const ID = req.body.product_ID;
+    const ID = req.body.ID;
 
     const BookTitle = req.body.BookTitle; 
 
     const Author = req.body.Author;
 
-    const book_price = req.body.book_price;
+    const Price = req.body.priceRange;
 
-    let count= 0;
+    let count = 0;
 
     for(let i = 0; i < req.session.cart.length; i++)
     {
@@ -226,31 +226,24 @@ app.get('/', function(req, res){
             ID : ID, 
             BookTitle : BookTitle, 
             Author : Author,
-            book_price_price : parseFloat(book_price_price),
+            book_price_price : parseFloat(Price),
             quantity : 1
         };
 
-        req.session,cart.push(car_data);
+        req.session,cart.push(cart_data);
     }
 
-    response.redirect("/");
-})*/
+    res.render('home.hbs')
+});
 
 //Route to Remove Item form cart
-app.get ('/remove_item', (req, res) => {
+app.post('/delete_item', function (req, res) {
+	//Getting body parameters
+	const { deleterecord} = req.body;
+	dbOperations.deleteItem(deleterecord, res);
+	
+ });
 
-    const ID = req.query.ID;
-
-    for(let i = 0; i < req.session.cart.length; i++)
-    {
-        if(req.session.cart[i].product_id === product_id)
-        {
-            req.session.cart.splice(i,1);
-        }
-    }
-
-    res.redirect("/");
-})
 
 //Route to Contact page
 app.get ('/contact' , function(req, res) {

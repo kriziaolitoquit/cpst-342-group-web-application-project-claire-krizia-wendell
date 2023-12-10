@@ -136,7 +136,7 @@ let getYearRangeBookList = (yearRange, res) => {
 };*/
 
 //Insert a book into the database
-let createBook= (BookTitle, Author, Genre, PublishedYear, NumberOfCopies, res) =>{
+/*let createBook= (BookTitle, Author, Genre, PublishedYear, NumberOfCopies, res) =>{
   var createBookItem = 'INSERT INTO bookList (BookTitle, Author, Genre, PublishedYear, NumberOfCopies) VALUES (?,?,?,?,?)'; //Parameterized Query
   var params = [BookTitle, Author, Genre, PublishedYear, NumberOfCopies];
   
@@ -151,17 +151,17 @@ let createBook= (BookTitle, Author, Genre, PublishedYear, NumberOfCopies, res) =
 
       getAllBookTitles(res);
   });
-};
+};*/
 
 
-//Delete a book item
-let deleteBook = (recordToDelete, res) =>{
+//Delete a book item from cart
+let remove_item = (recordToDelete, res) =>{
     
-  var deleteBookItem = 'DELETE FROM bookList WHERE itemID = ?';
+  var deleteBookItem = 'DELETE FROM bookList WHERE ID = ?';
 
   var params = [recordToDelete];
 
-db.run(deleteBookItem, params, function(err){
+db.run(remove_item, params, function(err){
   if (err){
     return console.log(err.message);
   }
@@ -172,7 +172,7 @@ db.run(deleteBookItem, params, function(err){
 });
 
 getAllBookTitles(res);
-}
+};
 
 //Update Book List Item
 let updateBook = (BookTitle, Author, Genre, PublishedYear, NumberOfCopies, res) =>{
