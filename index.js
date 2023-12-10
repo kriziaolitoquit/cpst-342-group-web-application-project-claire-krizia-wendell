@@ -1,6 +1,7 @@
 const express = require('express');
 const axios = require('axios');
 const dbOperations = require('./database.js');
+const bodyParser = require('body-parser');
 const app = express();
 const port = 3000
 
@@ -39,14 +40,23 @@ app.use(express.json());
 // For parsing application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
+// Parse URL-encoded bodies (as sent by HTML forms)
+app.use(bodyParser.urlencoded({ extended: true }));
+
+//Route to home get all items
+app.get('/', function (req, res) {
+
+    //dbOperations.getAllBookTitles(res);
+
+    res.render('home.hbs', { title: "The Digital Book Corner" });
+});
+
 //Route to home
 app.post('/search_item', function (req, res) {
 
     var bookEntry = req.body;
 	
 	dbOperations.getSpecificBook(bookEntry, res);
-
-    //res.render('home.hbs', {title: "The Digital Book Corner"})
 
 })
 
@@ -68,47 +78,28 @@ app.post('/search_demographics', function(req,res){
     dbOperations.getDemographicsBookList(demographicsEntry, res);
 });
 
-//route to home request for year radio
+//route to home request for yearRange
 
 app.post('/search_year', function(req, res){
-    var yearEntry = req.body;
 
-    dbOperations.getSmallestYearBookList(yearEntry, res);
+    var yearEntry = req.body.yearRange;
 
-    dbOperations.getSmallMidYearBookList(yearEntry, res);
-
-    dbOperations.getMidYearBookList(yearEntry, res);
-
-    dbOperations.getBigYearBookList(yearEntry, res);
+    dbOperations.getYearRangeBookList(yearEntry, res);
 
 });
 
-//route to home request price slider
+//route to home for priceRange
 
-//Route to home
-app.get('/', function (req, res) {
-    app.post('/search_price', function(req, res) {
-        var priceEntry = req.body;
-    
-        dbOperations.getLowestPriceBookList(priceEntry, res);
-    
-        dbOperations.getLowestMidBookList(priceEntry, res);
-    
-        dbOperations.getLowMidBookList(priceEntry, res);
-    
-        dbOperations.getMidBookList(priceEntry, res);
+/*app.post('/search_price', function(req, res){
+    // Extract the priceEntry from the request body
+    var priceEntry = req.body.priceRange;
 
-        dbOperations.getHighMidBookList(priceEntry, res);
-        
-        dbOperations.getHighBookList(priceEntry, res);
+    // Log the received priceEntry for debugging
+    console.log(priceEntry);
 
-        dbOperations.getHighestBookList(priceEntry, res);
-    
-    });
-    res.render('home.hbs', {title: "The Digital Book Corner"});
- 
-});
- 
+    // Call the getPriceRangeBookTitle function from dbOperations
+    dbOperations.getPriceRangeBookList(priceEntry, res);
+});*/
 
 //create search function
 
