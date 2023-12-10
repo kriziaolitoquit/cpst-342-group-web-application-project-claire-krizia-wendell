@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>The Digital Book Corner</title>
+        <meta charset="utf-8" />
+        <meta name="description" content="Digital Book Library">
+        <meta name="keywords" content="library, books, digital, academic, fiction, non-fiction">
+        <meta name="author" content="Claire Hooper, Krizia Olitoquit, Robbie Anderson">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    </head>
+    <body>
+        <header>
+            <div id="logoimg">
+                <a href=""><img src=""></a>
+            </div>
+            <div id="loginandshoppingcart">
+                <div id="loginbutton">
+                    <button>Login</button>
+                </div>
+                <div id="shoppingcart">
+                    <button><img src=""></button>
+                </div>
+            </div>
+            <div id="navbarlinks">
+
+            </div>
+
+        </header>
+        <div id="sidebar">
+            <!--suggesting to put code in home.hbs that includes genre, demographic, publishing year, and price-->
+        </div>
+        <div id="productlistgrid">
+            <ul>
+                {{#each rows}}
+                    <li>
+                        <img src="">
+                        <h6>Book Title: {{this.BookTitle}}</h6>
+                        <p>Author: {{this.Author}}</p>
+                        <p>Number of Copies: {{this.NumCopies}}</p>
+                        <p>Price: {{this.Price}}</p>
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
+        <footer>
+            <div id="footerlinkcolumn1">
+                <h3></h3>
+            </div>
+
+        </footer>
+    </body>
+</html>

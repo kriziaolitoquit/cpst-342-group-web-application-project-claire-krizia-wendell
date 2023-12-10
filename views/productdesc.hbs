@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>The Digital Book Corner</title>
+        <meta charset="utf-8" />
+        <meta name="description" content="Digital Book Library">
+        <meta name="keywords" content="library, books, digital, academic, fiction, non-fiction">
+        <meta name="author" content="Claire Hooper, Krizia Olitoquit, Robbie Anderson">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    </head>
+    <body>
+        <header>
+            <div id="logoimg">
+                <a href=""><img src=""></a>
+            </div>
+            <div id="loginandshoppingcart">
+                <div id="loginbutton">
+                    <button>Login</button>
+                </div>
+                <div id="shoppingcart">
+                    <button><img src=""></button>
+                </div>
+            </div>
+            <div id="navbarlinks">
+
+            </div>
+
+        </header>
+        <div id="Bookcover">
+            <img src="">
+        </div>
+        <div id="bookinfo">
+            <div id="booktitle">
+                <h3>{{this.BookTitle}}</h3>
+            </div>
+            <div id="bookauthor">
+                <h4>{{this.Author}}</h4>
+            </div>
+            <div id="price">
+                <p>Price: {{this.Price}}</p>
+            </div>
+            <div id="addtocartbutton">
+                <button>Add To Cart</button>
+            </div>
+            <div id="infotitle">
+                <h5>Information</h5>
+            </div>
+            <div id="infobox">
+                <h6>Description</h6>
+                <p>description goes here</p>
+                <p>{{this.Genre}}</p>
+                <p>Published in:{{this.PublishedYear}}</p>
+                <p>{{this.Demographic}}</p>
+                <p>Avialable number of Copies{{this.NumCopies}}</p>
+            </div>
+        </div>
+
+        
+    </body>
+</html>
