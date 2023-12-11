@@ -89,12 +89,12 @@ app.post('/search_year', function(req, res){
 
 });
 
-app.post('/getFullDetails' , function(req, res){
+/*app.post('/getFullDetails' , function(req, res){
 
     var detailsEntry = req.body;
 
-    dbOperations.getBookInFull(detailsEntry, res);
-});
+    res.render('productdesc', ID, detailsEntry);
+});*/
 
 //route to home for priceRange
 
@@ -201,9 +201,43 @@ app.get('/', function(req, res){
             req.session.cart = [];
         }
 
-        response.reder('product', { products : result, cart : req.session.cart});
+        res.render('product', { products : result, cart : req.session.cart});
     });
-});*/
+});
+
+
+
+//Create Route for Add Item into Cart 
+app.post('/add_cart', (req, res) => {
+
+    const Id = req.body.ID;
+    const BookTitle = req.body.BookTitle;
+    const Price = req.body.Price;
+
+    let coutn = 0;
+
+    for (let i = 0; i < req.session.cart.length; 1++){
+
+    if (req.session.cart[i].ID === ID)
+        {
+            req.session.cart[i].quantity += 1;
+
+            count++;
+         }
+    }    
+    if(count === 0){
+        const cart_data ={
+            ID : ID,
+            BookTitle : BookTitle,
+            Price : parseFloat(Price),
+            quantity : 1
+        };
+
+        req.session.cart.pusj(cart_data);
+    }
+
+    res.redirect('/shoppingCart')
+})
 
 //Route to Remove Item form cart
 app.post('/delete_item', function (req, res) {
@@ -215,7 +249,7 @@ app.post('/delete_item', function (req, res) {
 
 //Route to Shopping page
 // Route to handle adding items to the cart
-app.post('/addToCart', (req, res) => {
+/*app.post('/addToCart', (req, res) => {
     var { BookTitle, Price } = req.body;
 
     console.log({index_cart: req.body});
@@ -223,22 +257,22 @@ app.post('/addToCart', (req, res) => {
     // Access the cart from app.locals instead of req.session
     var cart = app.locals.cart;
 
-    //console.log(cart);
+    //console.log(cart);*/
     
 
     // Add the item to the cart (you may want to check for duplicates or perform additional checks)
-    cart.push({
-        BookTitle: BookTitle,
-        Price: Price,
-    });
+    //cart.push({
+       // BookTitle: BookTitle,
+        //Price: Price,
+    //});
 
     // Respond with a success message or updated cart data
-    res.json({ message: 'Item added to the cart', cart: cart });
-});
+    //res.json({ message: 'Item added to the cart', cart: cart });
+    //});
 
 app.get('/addToCart', (req, res) => {
-    // Render your shopping page here
-    res.render('shoppingCart.hbs');
+     //Render your shopping page here
+   res.render('shoppingCart.hbs');
 });
 
 

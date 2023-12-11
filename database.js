@@ -118,14 +118,14 @@ let getYearRangeBookList = (yearRange, res) => {
 
 //Display books on detail page 
 
-let getBookInFull = (BookTitle, res) => {
-  var bookDetails = `SELECT * FROM bookList WHERE BookTitle LIKE ?`; 
+let getBookInFull = (BookTitle, Author, Price, ID,  res) => {
+  var bookDetails = 'SELECT bookList SET BookTitle = ?, Author = ?, Price = ? WHERE ID = ?';; 
 
-  var params = [`%${BookTitle.BookTitle}%`];
+  var params = [BookTitle, Author, Price, ID];
 
-  var bookName = params[0]
+  //var bookName = params[0]
 
-  db.all(bookDetails, bookName, function(err, rows) {
+  db.all(bookDetails, params, function(err, rows) {
     if (err) {
       throw err;
     } else {
@@ -174,6 +174,19 @@ let getBookInFull = (BookTitle, res) => {
   });
 };*/
 
+
+/*let select_item =(recordToSelect, req) => {
+  var selectBookItem = 'SELECT FROM bookList WHERE ID =?';
+  var params = [recordToSelect];
+
+  db.run(selectBookItem, params, function(err){
+
+    if (err){
+      return console.log(err.message);
+
+    }
+  })
+}*/
 
 //Delete a book item from cart
 let remove_item = (recordToDelete, res) =>{
