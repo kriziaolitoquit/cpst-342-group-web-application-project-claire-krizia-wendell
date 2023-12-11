@@ -26,7 +26,7 @@ let getAllBookTitles = (res) => {
             console.log(row.item_name);
           });*/
           console.log(rows);
-          res.render('home', {rows})
+          res.render('product', {rows})
 
     })
 }
@@ -48,7 +48,7 @@ let getSpecificBook = (BookTitle, res) => {
       throw err;
     } else {
       console.log(rows);
-      res.render('home', { rows });
+      res.render('product', { rows });
     }
   });
 };
@@ -73,7 +73,7 @@ let getGenreBookList = (Genre, res) => {
       throw err;
     } else{
       //console.log(rows);
-      res.render('home', {rows})
+      res.render('product', {rows})
     }
   });
 };
@@ -93,7 +93,7 @@ let getDemographicsBookList = (Demographics, res) => {
       throw err;
     } else{
       console.log(rows);
-      res.render('home', {rows})
+      res.render('product', {rows})
     }
   });
 };
@@ -111,7 +111,26 @@ let getYearRangeBookList = (yearRange, res) => {
       throw err;
     } else{
       console.log(rows);
-      res.render('home', {rows})
+      res.render('product', {rows})
+    }
+  });
+};
+
+//Display books on detail page 
+
+let getBookInFull = (BookTitle, res) => {
+  var bookDetails = `SELECT * FROM bookList WHERE BookTitle LIKE ?`; 
+
+  var params = [`%${BookTitle.BookTitle}%`];
+
+  var bookName = params[0]
+
+  db.all(bookDetails, bookName, function(err, rows) {
+    if (err) {
+      throw err;
+    } else {
+      console.log(rows);
+      res.render('productdesc', { rows });
     }
   });
 };
@@ -197,4 +216,4 @@ let updateBook = (BookTitle, Author, Genre, PublishedYear, NumberOfCopies, res) 
 };
 
 module.exports = {getAllBookTitles, getSpecificBook, getGenreBookList, getDemographicsBookList, getYearRangeBookList,
-  remove_item, updateBook}
+  remove_item, updateBook, getBookInFull}

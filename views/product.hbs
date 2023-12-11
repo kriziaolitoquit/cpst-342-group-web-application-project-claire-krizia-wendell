@@ -38,9 +38,13 @@
                         <p>Author: {{this.Author}}</p>
                         <p>Number of Copies: {{this.NumCopies}}</p>
                         <p>Price: {{this.Price}}</p>
+                        <form action="/getFullDetails" method="POST">
+                            <input type="submit" class="btn btn-primary" value="Details">
+                        </form>
                     </li>
                 {{/each}}
             </ul>
+            
         </div>
         <footer>
             <div id="footerlinkcolumn1">

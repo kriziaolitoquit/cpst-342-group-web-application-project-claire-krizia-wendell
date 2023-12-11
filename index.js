@@ -89,6 +89,13 @@ app.post('/search_year', function(req, res){
 
 });
 
+app.post('/getFullDetails' , function(req, res){
+
+    var detailsEntry = req.body;
+
+    dbOperations.getBookInFull(detailsEntry, res);
+});
+
 //route to home for priceRange
 
 /*app.post('/search_price', function(req, res){
@@ -235,10 +242,29 @@ app.get('/addToCart', (req, res) => {
 });
 
 
+//Route to product page
+app.get ('/product' , function(req, res) {
+    res.render('product.hbs')
+});
+
+//Route to product description page
+app.get('/productdesc' , function(req, res){
+    res.render('productdesc.hbs')
+});
+
+
+//Route to about page
+app.get('/about' , function(req,res){
+    res.render('about.hbs')
+});
+
+
 //Route to Contact page
 app.get ('/contact' , function(req, res) {
     res.render('contact.hbs')
-})
+});
+
+
 
 //contact method 
 

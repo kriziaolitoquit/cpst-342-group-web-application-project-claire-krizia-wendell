@@ -18,8 +18,11 @@
                     <div class="card-body">
                         <h4 class="card-title">{{this.BookTitle}}</h4>
                         <p class="card-text">${{this.Price}}</p>
-                        <button class="cart" onclick="addToCart({{this.BookTitle}}, {{this.Price}})">Add to Cart</button>
-                    </div>
+                        <form action="/addToCart" method="POST">
+                            <input type="hidden" name="BookTitle" value="{{this.BookTitle}}">
+                            <input type="hidden" name="Price" value="{{this.Price}}">
+                            <input type="submit" value="Add to Cart">
+                        </form>
                 </div>
             {{/each}}
         </div>
