@@ -15,10 +15,11 @@
         <div class="container mt-4">
             {{#each rows}}
                 <div class="card mb-3">
-                <div class="card-body">
-                    <h4 class="card-title">{{this.BookTitle}}</h4>
-                    <p class="card-text">${{this.Price}}</p>
-                </div>
+                    <div class="card-body">
+                        <h4 class="card-title">{{this.BookTitle}}</h4>
+                        <p class="card-text">${{this.Price}}</p>
+                        <button class="cart" onclick="addToCart({{this.BookTitle}}, {{this.Price}})">Add to Cart</button>
+                    </div>
                 </div>
             {{/each}}
         </div>
@@ -29,38 +30,49 @@
                 <i class="fas fa-search"></i>
             </span>
             <input type="submit" class="btn btn-primary" value="Search">
-            <!-- "Add to Cart" button -->
-            <button type="button" class="btn btn-success" onclick="add_to_cart()">Add to Cart</button>
         </form>
 
         <h2>Genre</h2>
         <form action="/search_genre" method="POST">
             <input type="radio" id="Biography" name="genre" value="Biography">
             <label for="biography">Biography</label><br>
+
             <input type="radio" id="Business" name="genre" value="Business">
             <label for="business">Business</label><br>
+
             <input type="radio" id="Children" name="genre" value="Children">
             <label for="children">Children</label><br>
+
             <input type="radio" id="Classic" name="genre" value="Classic">
             <label for="children">Classic</label><br>
+
             <input type="radio" id="Fantasy" name="genre" value="Fantasy">
             <label for="fantasy">Fantasy</label><br>
+
             <input type="radio" id="Fiction" name="genre" value="Fiction">
             <label for="fiction">Fiction</label><br>
+
             <input type="radio" id="Literature" name="genre" value="Literature">
             <label for="literature">Literature</label><br>
+
             <input type="radio" id="Non-Fiction" name="genre" value="Non-Fiction">
             <label for="non-fiction">Non-Fiction</label><br>
+
             <input type="radio" id="Romance" name="genre" value="Romance">
             <label for="romance">Romance</label><br>
+
             <input type="radio" id="Science Fiction" name="genre" value="Science Fiction">
             <label for="sciencefiction">Science Fiction</label><br>
+
             <input type="radio" id="Self-Help" name="genre" value="Self-Help">
             <label for="self-help">Self-Help</label><br>
+
             <input type="radio" id="Textbooks" name="genre" value="Textbooks">
             <label for="textbooks">Textbooks</label><br>
+
             <input type="radio" id="Travel" name="genre" value="Travel">
             <label for="travel">Travel</label><br>
+
             <input type="submit" class="genre" value="submit">
             
         </form>
@@ -97,11 +109,29 @@
         </form>
 
         <script>
- 
-            function shoppingCart(){
-                window.location = '/shoppingCart';
+            function addToCart(bookTitle, price) {
+                
+               console.log(bookTitle);
+                // Send an AJAX request to the server to add the item to the cart
+                /*fetch('/addToCart', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        BookTitle: BookTitle,
+                        Price: Price,
+                    }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Handle the response from the server (if needed)
+                    console.log(data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });*/
             }
-        
         </script>
 
     </body>
