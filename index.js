@@ -67,6 +67,7 @@ app.post('/search_genre', function(req,res) {
     var genreEntry = req.body;
 
     dbOperations.getGenreBookList(genreEntry, res);
+
 });
 
 
@@ -197,45 +198,6 @@ app.get('/', function(req, res){
     });
 });*/
 
-//Route to Shopping Cart
-app.post ('/add_cart', (req, res) => {
-
-    const ID = req.body.ID;
-
-    const BookTitle = req.body.BookTitle; 
-
-    const Author = req.body.Author;
-
-    const Price = req.body.priceRange;
-
-    let count = 0;
-
-    for(let i = 0; i < req.session.cart.length; i++)
-    {
-        if (req.session.cart[i].ID === ID)
-        {
-            request.session.cart[i].quantity += 1;
-
-            count++;
-        }
-    }
-
-    if(count === 0)
-    {
-        const cart_data ={
-            ID : ID, 
-            BookTitle : BookTitle, 
-            Author : Author,
-            book_price_price : parseFloat(Price),
-            quantity : 1
-        };
-
-        req.session,cart.push(cart_data);
-    }
-
-    res.render('home.hbs')
-});
-
 //Route to Remove Item form cart
 app.post('/delete_item', function (req, res) {
 	//Getting body parameters
@@ -243,6 +205,34 @@ app.post('/delete_item', function (req, res) {
 	dbOperations.deleteItem(deleterecord, res);
 	
  });
+
+//Route to Shopping page
+// Route to handle adding items to the cart
+app.post('/addToCart', (req, res) => {
+    var { BookTitle, Price } = req.body;
+
+    console.log({index_cart: req.body});
+
+    // Access the cart from app.locals instead of req.session
+    var cart = app.locals.cart;
+
+    //console.log(cart);
+    
+
+    // Add the item to the cart (you may want to check for duplicates or perform additional checks)
+    cart.push({
+        BookTitle: BookTitle,
+        Price: Price,
+    });
+
+    // Respond with a success message or updated cart data
+    res.json({ message: 'Item added to the cart', cart: cart });
+});
+
+app.get('/addToCart', (req, res) => {
+    // Render your shopping page here
+    res.render('shoppingCart.hbs');
+});
 
 
 //Route to Contact page

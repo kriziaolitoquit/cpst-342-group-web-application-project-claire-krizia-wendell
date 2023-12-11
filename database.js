@@ -59,6 +59,8 @@ let getGenreBookList = (Genre, res) => {
 
   var searchGenre = `SELECT * FROM bookList WHERE Genre = ?`;
 
+  //console.log(searchGenre);
+
   var params = [Genre];
 
   //console.log(params);
@@ -70,7 +72,7 @@ let getGenreBookList = (Genre, res) => {
     if (err) {
       throw err;
     } else{
-      console.log(rows);
+      //console.log(rows);
       res.render('home', {rows})
     }
   });
@@ -161,7 +163,7 @@ let remove_item = (recordToDelete, res) =>{
 
   var params = [recordToDelete];
 
-db.run(remove_item, params, function(err){
+db.run(deleteBookItem, params, function(err){
   if (err){
     return console.log(err.message);
   }
@@ -195,4 +197,4 @@ let updateBook = (BookTitle, Author, Genre, PublishedYear, NumberOfCopies, res) 
 };
 
 module.exports = {getAllBookTitles, getSpecificBook, getGenreBookList, getDemographicsBookList, getYearRangeBookList,
-  createBook, deleteBook, updateBook}
+  remove_item, updateBook}
