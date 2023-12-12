@@ -19,9 +19,9 @@
                         <h4 class="card-title">{{this.BookTitle}}</h4>
                         <p class="card-text">${{this.Price}}</p>
                         <form action="/addToCart" method="POST">
-                            <input type="hidden" name="BookTitle" value="{{this.BookTitle}}">
-                            <input type="hidden" name="Price" value="{{this.Price}}">
-                            <input type="submit" value="Add to Cart">
+                            <input type="hidden" name="BookTitle" value={{this.BookTitle}}>
+                            <input type="hidden" name="Price" value={{this.Price}}>
+                            <input type="submit" value="Add To Cart" onclick="addToCart(event, '{{this.BookTitle}}', '{{this.Price}}')">
                         </form>
                 </div>
             {{/each}}
@@ -112,18 +112,30 @@
         </form>
 
         <script>
-            function addToCart(bookTitle, price) {
-                
-               console.log(bookTitle);
+            
+            function addToCart(event, bookTitle, price){
+            
+            event.preventDefault();
+
+            //var selectedOption = event.target.querySelector('input[name="BookTitle"]').value;
+               //Split the string into an array using the comma as a delimeter
+            //var selectedOptionArray = selectedOption.split(',');
+            
+            //var bookTitle = selectedOptionArray[0];
+            //var price = Number(selectedOptionArray[1]);
+
+            console.log("Book Title: ", bookTitle);
+            console.log("Price: ", price);
+            
                 // Send an AJAX request to the server to add the item to the cart
-                /*fetch('/addToCart', {
+                fetch('/addToCart', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        BookTitle: BookTitle,
-                        Price: Price,
+                        BookTitle: bookTitle,
+                        Price: price,
                     }),
                 })
                 .then(response => response.json())
@@ -133,9 +145,15 @@
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                });*/
+                });
             }
+
+               function Contact(){
+                window.location = '/contact';
+            }
+
         </script>
+
         <footer>
             <div id="footerlinkcolumn1">
                 <h3>Company</h3>
