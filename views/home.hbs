@@ -9,8 +9,111 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	</head>
     <body>
+        <header>
+                <div id="logoimg">
+                    <a href="/home"><img src=""></a>
+                </div>
+                <div id="loginandshoppingcart">
+                    <div id="loginbutton">
+                        <button>Login</button>
+                    </div>
+                    <div id="shoppingcart">
+                        <button formaction="shoppingCart"><img src=""></button>
+                    </div>
+                </div>
+                <div id="navbarlinks"> <!--this should have all the dropdownlinks we need as well as links to whatever pages-->
 
-        <h1>The Digital Book Corner</h1>
+                    <div id="searchgenre">
+                        <h4>Genre</h4>
+                            <div id="genreform">
+                                <form action="/search_genre" method="POST">
+                                    <input type="radio" id="Biography" name="genre" value="Biography">
+                                    <label for="biography">Biography</label><br>
+
+                                    <input type="radio" id="Business" name="genre" value="Business">
+                                    <label for="business">Business</label><br>
+
+                                    <input type="radio" id="Children" name="genre" value="Children">
+                                    <label for="children">Children</label><br>
+
+                                    <input type="radio" id="Classic" name="genre" value="Classic">
+                                    <label for="children">Classic</label><br>
+
+                                    <input type="radio" id="Fantasy" name="genre" value="Fantasy">
+                                    <label for="fantasy">Fantasy</label><br>
+
+                                    <input type="radio" id="Fiction" name="genre" value="Fiction">
+                                    <label for="fiction">Fiction</label><br>
+
+                                    <input type="radio" id="Literature" name="genre" value="Literature">
+                                    <label for="literature">Literature</label><br>
+
+                                    <input type="radio" id="Non-Fiction" name="genre" value="Non-Fiction">
+                                    <label for="non-fiction">Non-Fiction</label><br>
+
+                                    <input type="radio" id="Romance" name="genre" value="Romance">
+                                    <label for="romance">Romance</label><br>
+
+                                    <input type="radio" id="Science Fiction" name="genre" value="Science Fiction">
+                                    <label for="sciencefiction">Science Fiction</label><br>
+
+                                    <input type="radio" id="Self-Help" name="genre" value="Self-Help">
+                                    <label for="self-help">Self-Help</label><br>
+
+                                    <input type="radio" id="Textbooks" name="genre" value="Textbooks">
+                                    <label for="textbooks">Textbooks</label><br>
+
+                                    <input type="radio" id="Travel" name="genre" value="Travel">
+                                    <label for="travel">Travel</label><br>
+
+                                    <input type="submit" class="genre" value="submit">
+                
+                                </form>
+
+                            </div>
+                    </div>
+                    <div id="demographicsearch">
+                        <h4>Demographic</h4>
+                            <div id="demographicform">
+                                <form action="/search_demographics" method="POST">
+                                    <input type="radio" id="Adult" name="demographics" value="Adult">
+                                    <label for="Adult">Adult</label><br>
+
+                                    <input type="radio" id="Teens" name="demographics" value="Teens">
+                                    <label for="Teens">Teens</label><br>
+
+                                    <input type="radio" id="Kids" name="demographics" value="Kids">
+                                    <label for="Kids">Kids</label><br>
+
+                                    <input type="submit" class="demographic" value="Search">
+                                </form>
+                            </div>
+                    </div>
+                    <div id="yearsearch">
+                        <h4>Publishing Year</h4>
+                            <div id="yearform">
+                                <form action="/search_year" method="POST">
+                                    <input type="radio" id="0-2000" name="yearRange" value="0,2000">
+                                    <label for="0-2000">Before 2000</label><br>
+
+                                    <input type="radio" id="2001-2010" name="yearRange" value="2001,2010">
+                                    <label for="2001-2010">2001 - 2010</label><br>
+
+                                    <input type="radio" id="2011-2020" name="yearRange" value="2011,2020">
+                                    <label for="2011-2020">2011 - 2020</label><br>
+
+                                    <input type="radio" id="2021-2030" name="yearRange" value="2021,2030">
+                                    <label for="2021-2030">2021 and Beyond</label><br>
+
+                                    <input type="submit" class="yearRange" value="submit">
+                                </form>
+                            </div>
+                    </div>
+
+                </div>
+
+            </header>
+        <!--<h1>The Digital Book Corner</h1>
 
         <div class="container mt-4">
             {{#each rows}}
@@ -25,17 +128,44 @@
                         </form>
                 </div>
             {{/each}}
-        </div>
+        </div>-->
+        
 
+        
         <form action="/search_item" method="POST">
             <input type="search"  name="BookTitle" class="form-control rounded"  placeholder="Search" size="255" aria-label="Search" aria-describedby="search-addon" />
             <span class="input-group-text border-0" id="search-addon">
-                <i class="fas fa-search"></i>
+                    <i class="fas fa-search"></i>
             </span>
             <input type="submit" class="btn btn-primary" value="Search">
         </form>
 
-        <h2>Genre</h2>
+        <div id="ad1"> <!--these are mostly to break up the sliders and important content, if there is anything we want to add instead do it-->
+            <h2>Ad</h2>
+                <button formaction="">Shop Now</button>
+        </div>
+        
+        <div id="slider1">
+            <h1>Check Out What's New in the Corner</h1>
+            <!--slider here-->
+        </div>
+
+        <div id="ad2"> 
+            <h2>Ad</h2>
+                <button formaction="">Shop Now</button>
+        </div>
+
+        <div id="slider2">
+            <h1>Check Out Our Fantasy</h1>
+            <!--slider here-->
+        </div>
+
+        <div id="ad3"> 
+            <h2>Ad</h2>
+                <button formaction="">Shop Now</button>
+        </div>
+
+        <!--<h2>Genre</h2>
         <form action="/search_genre" method="POST">
             <input type="radio" id="Biography" name="genre" value="Biography">
             <label for="biography">Biography</label><br>
@@ -109,7 +239,7 @@
             <label for="2021-2030">2021 and Beyond</label><br>
 
             <input type="submit" class="yearRange" value="submit">
-        </form>
+        </form>-->
 
         <script>
             
