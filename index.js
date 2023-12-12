@@ -307,7 +307,11 @@ app.get('/submit', (req, res) => {
     var formInfo = req.query;
 
     // the second argument passes data back to the form
-    res.render('confirmation', {name : formInfo.fname, contact_method: formInfo.preferred_method})
+    res.render('confirmation', {firstName : formInfo.fname,
+                                lastName : formInfo.lname,
+                                email : formInfo.email,
+                                phone : formInfo.phone,
+                                contact_method: formInfo.preferred_method})
  })
 
 app.listen(port, () => console.log(`Digital Book Corner App listening on port ${port}!`))
