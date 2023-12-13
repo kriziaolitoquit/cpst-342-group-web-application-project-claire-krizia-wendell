@@ -86,24 +86,35 @@
             ul{
                border: 2px solid pink; 
                display: flex;
-               flex-wrap: wrap;
-               margin: 10px;
+               flex-wrap: wrap;  
+               justify-content: flex-start;
+               align-items: center;
             }
 
             li{
                 border: 2px solid pink;
-                width: 400px; 
-                height: 400px;
+                width: 300px; 
+                height: 300px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                margin: 10px;
+            }
+
+            li img{
+                width: 100px;
+                height: 150px;
             }
 
             #sidebar{
                 border: 2px solid red;
-                width: 25%;
+                width: 20%;
             }
 
             #productlistgrid{
                 border: 2px solid purple;
-                width: 75%;
+                width: 80%;
             }
 
             footer{
