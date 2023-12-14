@@ -28,6 +28,8 @@
                 grid-area: head;
             }
 
+            /*I have somethings I'm working on, for now this is just a square*/
+
             #logoimg{
                 border: 2px solid blue;
                 display: flex;
@@ -41,6 +43,8 @@
                 height: 50px;
             }
 
+
+            
             #loginandshoppingcart{
                 border: 2px solid blue;
                 display: flex;
@@ -53,6 +57,8 @@
                margin-right: 10px;
             }
 
+
+            /* will need to get an icon for this*/
             #shoppingcart{
                 border: 2px solid blue; 
                 margin-right: 10px;
@@ -71,39 +77,155 @@
                 border: 2px solid red;
                 grid-area: search;
                 height: 650px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            input[type=search]{
+                border: 2px solid red;
+                width: 700px;
             }
 
             
-
+            .btn-btn-primary{
+                border: 2px solid red;
+                margin-left: 600px;
+                margin-top: 20px;
+            }
+            
+            /*when I say ad here, I mean some content to break up the sliders and the main search bar. they could be links to certain books or search options, up to you guys*/
             #ad1{
                 border: 2px solid purple; 
                 grid-area: ad1;
-                height: 500px
+                height: 500px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
+
+            #adbox1{
+                border: 2px solid purple;
+                height: 450px;
+                width: 800px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            } 
+
+            #adbox1 h2{
+                border: 2px solid purple;
+                display: flex;
+                justify-content: flex-end;
+                margin-left: 70px;
+            }
+
+            #adbox1 button{
+                border: 2px solid purple;
+                width: 80px;
+            }
+
 
             #slider1{
                 border: 2px solid pink; 
                 grid-area: slide1;
                 height: 400px;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+            }
+
+            /*for now there is just a grey box but these would be the sliders*/
+            #sliderplaceholder1{
+                border: 2px solid pink; 
+                height: 300px;
+                width: 95%; 
+                margin-left: 70px;
+                background-color: lightgray;
             }
 
             #ad2{
                 border: 2px solid purple; 
                 grid-area: ad2;
-                height: 500px
+                height: 500px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
+
+             #adbox2{
+                border: 2px solid purple;
+                height: 450px;
+                width: 800px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            } 
+
+            #adbox2 h2{
+                border: 2px solid purple;
+                display: flex;
+                justify-content: flex-end;
+                margin-left: 70px;
+            }
+
+            #adbox2 button{
+                border: 2px solid purple;
+                width: 80px;
+            }
+
 
              #slider2{
                 border: 2px solid pink; 
                 grid-area: slide2;
                 height: 400px;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+            }
+
+            #sliderplaceholder2{
+                border: 2px solid pink; 
+                height: 300px;
+                width: 95%; 
+                margin-left: 70px;
+                background-color: lightgray;
             }
 
             #ad3{
                 border: 2px solid purple; 
                 grid-area: ad3;
-                height: 500px
+                height: 500px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
+
+             #adbox3{
+                border: 2px solid purple;
+                height: 450px;
+                width: 800px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            } 
+
+            #adbox3 h2{
+                border: 2px solid purple;
+                display: flex;
+                justify-content: flex-end;
+                margin-left: 70px;
+            }
+
+            #adbox3 button{
+                border: 2px solid purple;
+                width: 80px;
+            }
+
 
             footer{
                 border: 2px solid aqua;
@@ -246,32 +368,46 @@
                 <span class="input-group-text border-0" id="search-addon">
                         <i class="fas fa-search"></i>
                 </span>
-                <input type="submit" class="btn btn-primary" value="Search">
+                <input type="submit" class="btn-btn-primary" value="Search">
             </form>
 
             <div id="ad1"> <!--these are mostly to break up the sliders and important content, if there is anything we want to add instead do it-->
-                <h2>Ad</h2>
+                <div id="adbox1">
+                    <h2>Ad</h2>
+                    
                     <button formaction="">Shop Now</button>
+                </div>
             </div>
             
             <div id="slider1">
                 <h1>Check Out What's New in the Corner</h1>
-                <!--slider here-->
+                <div id="sliderplaceholder1">
+                    <!--slider here-->
+                </div>
+                
             </div>
 
             <div id="ad2"> 
-                <h2>Ad</h2>
-                    <button formaction="">Shop Now</button>
+                 <div id="adbox2">
+                    <h2>Ad</h2>
+                    
+                        <button formaction="">Shop Now</button>
+                 </div>
             </div>
 
             <div id="slider2">
                 <h1>Check Out Our Fantasy</h1>
-                <!--slider here-->
+                <div id="sliderplaceholder2">
+                    <!--slider here-->
+                </div>
             </div>
 
             <div id="ad3"> 
-                <h2>Ad</h2>
-                    <button formaction="">Shop Now</button>
+                <div id="adbox3">
+                    <h2>Ad</h2>
+                    
+                        <button formaction="">Shop Now</button>
+                 </div>
             </div>
 
             <!--<h2>Genre</h2>

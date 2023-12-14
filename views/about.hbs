@@ -8,6 +8,17 @@
         <meta name="author" content="Claire Hooper, Krizia Olitoquit, Robbie Anderson">
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <style>
+
+            #container{
+                border: 3px solid green;
+                width: 100%;
+                grid-template-columns: 50% 50%;
+                grid-template-rows: 100px auto auto;
+                grid-template-areas: "head head"
+                                    "about about"
+                                    "foot foot";
+            }
+
             header{
                 border: 2px solid blue;
                 grid-area: head;
@@ -53,6 +64,7 @@
                margin-left: 110px;
             }
 
+            /*these are for the dropdown, they are not displayed for now to show how the nav bar may look */
             #navbarlinks #genreform form{
                 display: none;
             }
@@ -65,6 +77,69 @@
                  display: none;
             }
 
+            #aboutpage{
+                border: 2px solid purple;
+                grid-area: about;
+                display: flex;
+                justify-content: center;
+            }
+
+            #aboutimage{
+                border: 2px solid purple;
+                width: 40%;
+                height: 800px;
+            }
+
+            #aboutblurb{
+                border: 2px solid purple;
+                width: 60%;
+            }
+
+            #blurb{
+                border: 2px solid purple;
+            }
+
+            #blurb h1{
+                border: 2px solid purple;
+                margin-left: 30px;
+            }
+
+            #blurb p{
+               border: 2px solid purple;
+               width: 600px;
+               margin-left: 40px;
+               text-align: justify; 
+            }
+
+            #address{
+                border: 2px solid purple;
+                margin-top: 35%;
+            }
+
+            #address strong{
+               border: 2px solid purple;
+               margin-left: 30px; 
+            }
+
+            #address p{
+               border: 2px solid purple; 
+               margin-left: 40px;
+            }
+
+            #hours{
+               border: 2px solid purple; 
+            }
+
+            #hours strong{
+                border: 2px solid purple;
+                margin-left: 30px; 
+            }
+
+            #hours p{
+               border: 2px solid purple; 
+               margin-left: 40px; 
+            }
+
             footer{
                 border: 2px solid aqua;
                 grid-area: foot;
@@ -75,147 +150,153 @@
         </style>
     </head>
     <body>
-       
-        <header>
-            <div id="logoimg">
-                <a href="/home"><img src=""></a>
-            </div>
-            <div id="loginandshoppingcart">
-                <div id="loginbutton">
-                    <button>Login</button>
+       <div id="aboutcontainer">
+            <header>
+                <div id="logoimg">
+                    <a href="home"><img src=""></a>
                 </div>
-                <div id="shoppingcart">
-                    <button formaction="shoppingCart"><img src=""></button>
+                <div id="loginandshoppingcart">
+                    <div id="loginbutton">
+                        <button>Login</button>
+                    </div>
+                    <div id="shoppingcart">
+                        <button formaction="shoppingCart"><img src=""></button>
+                    </div>
                 </div>
-            </div>
-            <div id="navbarlinks"> <!--this should have all the dropdownlinks we need as well as links to whatever pages-->
+                <div id="navbarlinks"> <!--this should have all the dropdownlinks we need as well as links to whatever pages-->
 
-                <div id="searchgenre">
-                    <h4>Genre</h4>
-                        <div id="genreform">
-                            <form action="/search_genre" method="POST">
-                                <input type="radio" id="Biography" name="genre" value="Biography">
-                                <label for="biography">Biography</label><br>
+                    <div id="searchgenre">
+                        <h4>Genre</h4>
+                            <div id="genreform">
+                                <form action="/search_genre" method="POST">
+                                    <input type="radio" id="Biography" name="genre" value="Biography">
+                                    <label for="biography">Biography</label><br>
 
-                                <input type="radio" id="Business" name="genre" value="Business">
-                                <label for="business">Business</label><br>
+                                    <input type="radio" id="Business" name="genre" value="Business">
+                                    <label for="business">Business</label><br>
 
-                                <input type="radio" id="Children" name="genre" value="Children">
-                                <label for="children">Children</label><br>
+                                    <input type="radio" id="Children" name="genre" value="Children">
+                                    <label for="children">Children</label><br>
 
-                                <input type="radio" id="Classic" name="genre" value="Classic">
-                                <label for="children">Classic</label><br>
+                                    <input type="radio" id="Classic" name="genre" value="Classic">
+                                    <label for="children">Classic</label><br>
 
-                                <input type="radio" id="Fantasy" name="genre" value="Fantasy">
-                                <label for="fantasy">Fantasy</label><br>
+                                    <input type="radio" id="Fantasy" name="genre" value="Fantasy">
+                                    <label for="fantasy">Fantasy</label><br>
 
-                                <input type="radio" id="Fiction" name="genre" value="Fiction">
-                                <label for="fiction">Fiction</label><br>
+                                    <input type="radio" id="Fiction" name="genre" value="Fiction">
+                                    <label for="fiction">Fiction</label><br>
 
-                                <input type="radio" id="Literature" name="genre" value="Literature">
-                                <label for="literature">Literature</label><br>
+                                    <input type="radio" id="Literature" name="genre" value="Literature">
+                                    <label for="literature">Literature</label><br>
 
-                                <input type="radio" id="Non-Fiction" name="genre" value="Non-Fiction">
-                                <label for="non-fiction">Non-Fiction</label><br>
+                                    <input type="radio" id="Non-Fiction" name="genre" value="Non-Fiction">
+                                    <label for="non-fiction">Non-Fiction</label><br>
 
-                                <input type="radio" id="Romance" name="genre" value="Romance">
-                                <label for="romance">Romance</label><br>
+                                    <input type="radio" id="Romance" name="genre" value="Romance">
+                                    <label for="romance">Romance</label><br>
 
-                                <input type="radio" id="Science Fiction" name="genre" value="Science Fiction">
-                                <label for="sciencefiction">Science Fiction</label><br>
+                                    <input type="radio" id="Science Fiction" name="genre" value="Science Fiction">
+                                    <label for="sciencefiction">Science Fiction</label><br>
 
-                                <input type="radio" id="Self-Help" name="genre" value="Self-Help">
-                                <label for="self-help">Self-Help</label><br>
+                                    <input type="radio" id="Self-Help" name="genre" value="Self-Help">
+                                    <label for="self-help">Self-Help</label><br>
 
-                                <input type="radio" id="Textbooks" name="genre" value="Textbooks">
-                                <label for="textbooks">Textbooks</label><br>
+                                    <input type="radio" id="Textbooks" name="genre" value="Textbooks">
+                                    <label for="textbooks">Textbooks</label><br>
 
-                                <input type="radio" id="Travel" name="genre" value="Travel">
-                                <label for="travel">Travel</label><br>
+                                    <input type="radio" id="Travel" name="genre" value="Travel">
+                                    <label for="travel">Travel</label><br>
 
-                                <input type="submit" class="genre" value="submit">
-            
-                            </form>
-
-                        </div>
-                </div>
-                <div id="demographicsearch">
-                    <h4>Demographic</h4>
-                        <div id="demographicform">
-                            <form action="/search_demographics" method="POST">
-                                <input type="radio" id="Adult" name="demographics" value="Adult">
-                                <label for="Adult">Adult</label><br>
-
-                                <input type="radio" id="Teens" name="demographics" value="Teens">
-                                <label for="Teens">Teens</label><br>
-
-                                <input type="radio" id="Kids" name="demographics" value="Kids">
-                                <label for="Kids">Kids</label><br>
-
-                                <input type="submit" class="demographic" value="Search">
-                            </form>
-                        </div>
-                </div>
-                <div id="yearsearch">
-                    <h4>Publishing Year</h4>
-                        <div id="yearform">
-                            <form action="/search_year" method="POST">
-                                <input type="radio" id="0-2000" name="yearRange" value="0,2000">
-                                <label for="0-2000">Before 2000</label><br>
-
-                                <input type="radio" id="2001-2010" name="yearRange" value="2001,2010">
-                                <label for="2001-2010">2001 - 2010</label><br>
-
-                                <input type="radio" id="2011-2020" name="yearRange" value="2011,2020">
-                                <label for="2011-2020">2011 - 2020</label><br>
-
-                                <input type="radio" id="2021-2030" name="yearRange" value="2021,2030">
-                                <label for="2021-2030">2021 and Beyond</label><br>
-
-                                <input type="submit" class="yearRange" value="submit">
-                            </form>
-                        </div>
-                </div>
-
-            </div>
-
-        </header>
-
-        <div id="aboutpage">
-            <div id="aboutimage">
-                <img src="">
-            </div>
-            <div id="aboutblurb">
-                <h1>About The Digital Book Corner</h1>
-                <p>The Digital Book Corner is the ideal destination for premier collection of books, ebooks, magazines 
-                    and related product and services.</p>
+                                    <input type="submit" class="genre" value="submit">
                 
-                <br>
-                <strong>The Digital Book Corner Physical Address</strong>
-                <br>
-                1032 W Sheridan Rd, Chicago, IL 60660
-                <br>
-                <br>
-                <strong>Hours of Operation</strong>
-                <br>
-                Monday to Friday: 8:00 AM - 8:00 PM
-                <br>
-                Saturday: 8:00 AM - 5:00 PM
-                <br>
-                Sunday: Closed
-                <br>
-            </div>
-        </div>
-        <footer>
-            <div id="footerlinkcolumn1">
-                <h3>Company</h3>
-                <a href="/about">About</a>
-            </div>
-            <div id="footerlinkcolumn2">
-                <h3>Help</h3>
-                <a href="/contact">Contact</a>
-            </div>
+                                </form>
 
-        </footer>
+                            </div>
+                    </div>
+                    <div id="demographicsearch">
+                        <h4>Demographic</h4>
+                            <div id="demographicform">
+                                <form action="/search_demographics" method="POST">
+                                    <input type="radio" id="Adult" name="demographics" value="Adult">
+                                    <label for="Adult">Adult</label><br>
+
+                                    <input type="radio" id="Teens" name="demographics" value="Teens">
+                                    <label for="Teens">Teens</label><br>
+
+                                    <input type="radio" id="Kids" name="demographics" value="Kids">
+                                    <label for="Kids">Kids</label><br>
+
+                                    <input type="submit" class="demographic" value="Search">
+                                </form>
+                            </div>
+                    </div>
+                    <div id="yearsearch">
+                        <h4>Publishing Year</h4>
+                            <div id="yearform">
+                                <form action="/search_year" method="POST">
+                                    <input type="radio" id="0-2000" name="yearRange" value="0,2000">
+                                    <label for="0-2000">Before 2000</label><br>
+
+                                    <input type="radio" id="2001-2010" name="yearRange" value="2001,2010">
+                                    <label for="2001-2010">2001 - 2010</label><br>
+
+                                    <input type="radio" id="2011-2020" name="yearRange" value="2011,2020">
+                                    <label for="2011-2020">2011 - 2020</label><br>
+
+                                    <input type="radio" id="2021-2030" name="yearRange" value="2021,2030">
+                                    <label for="2021-2030">2021 and Beyond</label><br>
+
+                                    <input type="submit" class="yearRange" value="submit">
+                                </form>
+                            </div>
+                    </div>
+
+                </div>
+
+            </header>
+
+            <div id="aboutpage">
+                <div id="aboutimage">
+                    <img src="">
+                </div>
+                <div id="aboutblurb">
+                    <div id="blurb">
+                        <h1>About The Digital Book Corner</h1>
+                        <p>The Digital Book Corner is the ideal destination for premier collection of books, ebooks, magazines 
+                            and related product and services.</p>
+                    </div>
+                    <div id="address">
+                        <br>
+                        <strong>The Digital Book Corner Physical Address</strong>
+                        <br>
+                        <p>1032 W Sheridan Rd, Chicago, IL 60660</p>
+                        <br>
+                    </div>
+                    <div id="hours">
+                        <br>
+                        <strong>Hours of Operation</strong>
+                        <br>
+                        <p>Monday to Friday: 8:00 AM - 8:00 PM</p>
+                        <br>
+                        <p>Saturday: 8:00 AM - 5:00 PM</p>
+                        <br>
+                        <p>Sunday: Closed</p>
+                        <br>
+                    </div>
+                </div>
+            </div>
+            <footer>
+                <div id="footerlinkcolumn1">
+                    <h3>Company</h3>
+                    <a href="/about">About</a>
+                </div>
+                <div id="footerlinkcolumn2">
+                    <h3>Help</h3>
+                    <a href="/contact">Contact</a>
+                </div>
+
+            </footer>
+        </div>
     </body>
 </html>
