@@ -128,6 +128,17 @@
                 padding-bottom: 70px;
             }
 
+            .cart-button {
+                background: none;
+                border: none;
+                cursor: pointer;
+            }
+
+            .cart-button img {
+                width: 30px; /* Adjust the width as needed */
+                height: auto;
+            }
+
         </style>
     </head>
     <body>
@@ -135,15 +146,15 @@
         
             <header>
                 <div id="logoimg">
-                    <a href="/home"><img src=""></a><!--this route doesn't seem to work-->
+                    <a href="/"><img src="./BookLogo.jpg" alt="logo"></a><!--this route doesn't seem to work-->
                 </div>
                 <div id="loginandshoppingcart">
-                    <div id="loginbutton">
-                        <button>Login</button>
-                    </div>
-                    <div id="shoppingcart">
-                        <button formaction="shoppingCart"><img src=""></button>
-                    </div>
+                       <div id="loginbutton">
+                            <button class="login-button" onclick="location.href='/login'">Login</button>
+                        </div>
+                   <button class="cart-button" onclick="location.href='/shoppingCart'">
+                                <img src="./cartpic.jpg" alt="cart">
+                    </button>
                 </div>
                 <div id="navbarlinks"> <!--this should have all the dropdownlinks we need as well as links to whatever pages-->
 
@@ -341,10 +352,12 @@
                                 <form action="/productdesc" method="GET">
                                     <input type="submit" class="btn btn-primary" value="Details">
                                 </form>
-                                <form action="/addToCart" method="GET">
+                                <form action="/addToCart" method="POST">
                                     <input type="hidden" name="BookTitle" value="{{this.BookTitle}}">
                                     <input type="hidden" name="Price" value="{{this.Price}}">
-                                    <input type="submit" value="Add to Cart">
+                                    <!--<input type="submit" value="Add to Cart-mareez">-->
+                                    <button name="AddingToCart" id="cart" type="button" onclick="addToCart(event)" class="btn btn-danger" 
+                                            value="{{this.BookTitle}},{{this.Price}}">Add to Cart</button>
                                 </form>
                             </li>
                         {{/each}}
@@ -352,6 +365,46 @@
                     
                 </div>
             </div>
+
+            <script>
+                
+                    function addToCart(event){
+
+                    event.preventDefault();
+
+                    var selectedOption = event.target.value;
+                    //Split the string into an array using the comma as a delimeter
+                    var selectedOptionArray = selectedOption.split(',');
+                    
+                    var bookTitle = selectedOptionArray[0];
+                    var price = Number(selectedOptionArray[1]);
+
+                    alert("Book Title: " + bookTitle);
+                    alert("Price: " + price);
+                    
+                        // Send an AJAX request to the server to add the item to the cart
+                        fetch('/addToCart', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                BookTitle: bookTitle,
+                                Price: price,
+                            }),
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            // Handle the response from the server (if needed)
+                            console.log(data);
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                        });
+                    }
+
+            </script>
+
             <footer>
                 <div id="footerlinkcolumn1">
                     <h3>Company</h3>

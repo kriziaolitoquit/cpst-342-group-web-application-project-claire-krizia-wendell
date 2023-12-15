@@ -30,7 +30,7 @@
 
             /*I have somethings I'm working on, for now this is just a square*/
 
-            #logoimg{
+            #logoimg {
                 border: 2px solid blue;
                 display: flex;
                 justify-content: center;
@@ -42,8 +42,6 @@
                 width: 50px;
                 height: 50px;
             }
-
-
             
             #loginandshoppingcart{
                 border: 2px solid blue;
@@ -234,22 +232,41 @@
                 justify-content: space-evenly;
                 padding-bottom: 70px;
             }
+
+            .cart-button {
+                background: none;
+                border: none;
+                cursor: pointer;
+            }
+
+            .cart-button img {
+                width: 30px; /* Adjust the width as needed */
+                height: auto;
+            }
             
+            h1 {
+                    color: #333; /* Adjust color as needed */
+                    text-align: center;
+                }
+                
         </style>
 	</head>
     
     <body>
         <div id="container">
             <header>
+                    <h1>The Digital Book Corner</h1>
                     <div id="logoimg">
-                        <a href="/home"><img src=""></a><!--this route doesn't seem to work-->
+                        <a href="/"><img src="./BookLogo.jpg" alt="logo"></a>
                     </div>
                     <div id="loginandshoppingcart">
                         <div id="loginbutton">
-                            <button>Login</button>
+                            <button class="login-button" onclick="location.href='/login'">Login</button>
                         </div>
                         <div id="shoppingcart">
-                            <button formaction="shoppingCart"><img src=""></button>
+                            <button class="cart-button" onclick="location.href='/shoppingCart'">
+                                <img src="./cartpic.jpg" alt="cart">
+                            </button>
                         </div>
                     </div>
                     <div id="navbarlinks"> <!--this should have all the dropdownlinks we need as well as links to whatever pages-->
@@ -344,7 +361,7 @@
                     </div>
 
                 </header>
-            <!--<h1>The Digital Book Corner</h1>
+            <!--<h1>The Digital Book Corner</h1>-->
 
             <div class="container mt-4">
                 {{#each rows}}
@@ -359,10 +376,8 @@
                             </form>
                     </div>
                 {{/each}}
-            </div>-->
-            
+            </div>
 
-            
             <form action="/search_item" class="search" method="POST">
                 <input type="search"  name="BookTitle" class="form-control rounded"  placeholder="Search" size="255" aria-label="Search" aria-describedby="search-addon" />
                 <span class="input-group-text border-0" id="search-addon">
@@ -487,45 +502,6 @@
             </form>-->
 
             <script>
-                
-                function addToCart(event, bookTitle, price){
-                
-                event.preventDefault();
-
-                //var selectedOption = event.target.querySelector('input[name="BookTitle"]').value;
-                //Split the string into an array using the comma as a delimeter
-                //var selectedOptionArray = selectedOption.split(',');
-                
-                //var bookTitle = selectedOptionArray[0];
-                //var price = Number(selectedOptionArray[1]);
-
-                console.log("Book Title: ", bookTitle);
-                console.log("Price: ", price);
-                
-                    // Send an AJAX request to the server to add the item to the cart
-                    fetch('/addToCart', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            BookTitle: bookTitle,
-                            Price: price,
-                        }),
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        // Handle the response from the server (if needed)
-                        console.log(data);
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                    });
-                }
-
-                function Contact(){
-                    window.location = '/contact';
-                }
 
             </script>
 
