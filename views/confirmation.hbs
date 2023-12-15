@@ -1,19 +1,32 @@
 <!DOCTYPE html>
 <head>
-    <title>Digital Libray - Contact Page</title>
-    <body>
+    <style>
+           .cart-button {
+                background: none;
+                border: none;
+                cursor: pointer;
+            }
 
+            .cart-button img {
+                width: 30px; /* Adjust the width as needed */
+                height: auto;
+            }
+
+    </style>
+</head>
+<body>
+        <title>Digital Libray - Contact Page</title>
         <header>
             <div id="logoimg">
-                <a href="/home"><img src=""></a>
+                <a href="/"><img src="./BookLogo.jpg" alt="logo"></a>
             </div>
             <div id="loginandshoppingcart">
                 <div id="loginbutton">
-                    <button>Login</button>
+                    <button class="login-button" onclick="location.href='/login'">Login</button>
                 </div>
-                <div id="shoppingcart">
-                    <button formaction="shoppingCart"><img src=""></button>
-                </div>
+                <button class="cart-button" onclick="location.href='/shoppingCart'">
+                                <img src="./cartpic.jpg" alt="cart">
+                </button>
             </div>
             <div id="navbarlinks"> <!--this should have all the dropdownlinks we need as well as links to whatever pages-->
 
@@ -128,5 +141,4 @@
 
         </footer>
     </body>
-</head>
 </html>

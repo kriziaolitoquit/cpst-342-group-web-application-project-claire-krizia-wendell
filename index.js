@@ -46,9 +46,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //Route to home get all items
 app.get('/', function (req, res) {
 
-    //dbOperations.getAllBookTitles(res);
-
     res.render('home.hbs', { title: "The Digital Book Corner" });
+});
+
+app.get('/shoppingCart', function (req, res) {
+
+    res.render('shoppingCart.hbs');
+});
+
+app.get('/login', function (req, res) {
+
+    res.render('login.hbs');
 });
 
 //Route to home
@@ -62,9 +70,10 @@ app.post('/search_item', function (req, res) {
 
 //route to home request for genre radio
 app.post('/search_genre', function(req,res) {
-    //console.log(req.body);
 
     var genreEntry = req.body;
+
+    console.log(genreEntry);
 
     dbOperations.getGenreBookList(genreEntry, res);
 

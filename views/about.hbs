@@ -147,21 +147,33 @@
                 justify-content: space-evenly;
                 padding-bottom: 70px;
             }
+
+            .cart-button {
+                background: none;
+                border: none;
+                cursor: pointer;
+            }
+
+            .cart-button img {
+                width: 30px; /* Adjust the width as needed */
+                height: auto;
+            }
+
         </style>
     </head>
     <body>
        <div id="aboutcontainer">
             <header>
                 <div id="logoimg">
-                    <a href="home"><img src=""></a> <!--this route doesn't seem to work-->
+                    <a href="/"><img src="./BookLogo.jpg" alt="logo"></a> <!--this route doesn't seem to work-->
                 </div>
                 <div id="loginandshoppingcart">
                     <div id="loginbutton">
-                        <button>Login</button>
+                        <button class="login-button" onclick="location.href='/login'">Login</button>
                     </div>
-                    <div id="shoppingcart">
-                        <button formaction="shoppingCart"><img src=""></button>
-                    </div>
+                    <button class="cart-button" onclick="location.href='/shoppingCart'">
+                                <img src="./cartpic.jpg" alt="cart">
+                    </button>
                 </div>
                 <div id="navbarlinks"> <!--this should have all the dropdownlinks we need as well as links to whatever pages-->
 
