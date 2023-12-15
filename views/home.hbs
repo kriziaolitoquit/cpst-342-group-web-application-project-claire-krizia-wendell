@@ -2,18 +2,41 @@
 <html>
 	<head>
 		<title>The Digital Book Corner</title>
-        <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
 		<meta charset="utf-8" />
         <meta name="description" content="Digital Book Library">
         <meta name="keywords" content="library, books, digital, academic, fiction, non-fiction">
         <meta name="author" content="Claire Hooper, Krizia Olitoquit, Robbie Anderson">
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <style>
+            html, body, div, span, object, iframe,
+    h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+    abbr, address, cite, code,
+    del, dfn, em, img, ins, kbd, q, samp,
+    small, strong, sub, sup, var,
+    b, i,
+    dl, dt, dd, ol, ul, li,
+    fieldset, form, label, legend,
+    table, caption, tbody, tfoot, thead, tr, th, td,
+    article, aside, canvas, details, figcaption, figure, 
+    footer, header, hgroup, menu, nav, section, summary,
+    time, mark, audio, video {
+        margin:0;
+        padding:0;
+        border:0;
+        outline:0;
+        font-size:100%;
+        vertical-align:baseline;
+        background:transparent;
+
+   
+
+    }
             #container{
                 border: 3px solid Green;
+                background-color: #FCEDD4;
                 width: 100%;
                 grid-template-columns: auto;
-                grid-template-rows: 100px auto auto auto auto auto auto auto;
+                grid-template-rows: 130px auto auto auto auto auto auto auto;
                 grid-template-areas: "head"
                                     "search"
                                     "ad1"
@@ -24,56 +47,260 @@
                                     "foot";
             }
 
+    @font-face {
+        font-family: Limelight;
+        src: url(/assets/Limelight-Regular\ copy.ttf);
+    }
+
+    @font-face {
+        font-family: CantataOne;
+        src: url(/assets/CantataOne-Regular\ copy.ttf);
+    }
+
+    @font-face {
+        font-family: BigCaslon;
+        src: url(/assets/BigCaslon.ttf);
+    }
             header{
-                border: 2px solid blue;
                 grid-area: head;
+                background-color: #8DB8A8;
+            }
+
+            header h1{
+                padding-top: 30px;
+                font-family: CantataOne;
+                font-size: 30px;
+                color: #1F2224;
+
             }
 
             /*I have somethings I'm working on, for now this is just a square*/
 
             #logoimg {
-                border: 2px solid blue;
                 display: flex;
                 justify-content: center;
                 align-items: center;
             }
 
             #logoimg a img{
-                border: 2px solid blue;
                 width: 50px;
                 height: 50px;
             }
             
             #loginandshoppingcart{
-                border: 2px solid blue;
                 display: flex;
                 justify-content: flex-end;
                 margin-right: 10px;
             }
+            
 
             #loginbutton{
-               border: 2px solid blue; 
-               margin-right: 10px;
+               margin-right: 20px;
+
+            }
+
+            .login-button{
+                font-family: CantataOne;
+                font-size: 20px;
+                color: #1F2224;
+                padding-top: 10px;
+                padding-bottom: 10px;  
+                padding-left: 20px; 
+                padding-right: 20px;
+                border-radius: 0%;
+                background-color: #8DB8A8;
+                border: 2px solid #1F2224;
+            }
+
+            .login-button:hover{
+                border: 2px solid #1F2224;
+                background-color: #1F2224;
+                color: #FCEDD4;
             }
 
 
             /* will need to get an icon for this*/
             #shoppingcart{
-                border: 2px solid blue; 
+                 
                 margin-right: 10px;
             }
 
             #navbarlinks{
-               border: 2px solid blue; 
+                
                display: flex;
                justify-content: space-evenly; 
                align-items: center;
                width: 90%;
-               margin-left: 110px;
+               margin-left: 130px;
             }
+
+            #searchgenre{
+                
+                position: relative;
+                display: inline-block;
+            }
+
+            #searchgenre:hover #genreform{
+                display: block;
+            }
+
+            .dropbtn{
+                border: 2px solid #8DB8A8;
+                padding-left: 20px;
+                padding-right: 20px;
+                border-radius: 0%;
+                cursor: pointer;
+                background-color: #8DB8A8;
+            }
+
+            .dropbtn h4{
+                font-family: CantataOne;
+                font-size: 25px;
+                color: #1F2224;
+            }
+
+            #genreform{
+               
+               background-color: #79A293;
+               cursor: pointer;
+               display: none;
+               position: absolute;
+               right: 0; 
+               min-width: 160px;
+               z-index: 1;
+            }
+
+            #genreform form input [type=radio]{
+                 
+                cursor: pointer;
+                display: block;
+                font-family: BigCaslon;
+            }
+
+            .genre{
+               border: 2px solid #1F2224; 
+               margin-top: 5px;
+               padding-top: 10px; 
+               padding-bottom: 10px;
+               padding-left: 20px;
+               padding-right: 20px;
+               border-radius: 0%;
+               background-color: #79A293;
+               font-family: CantataOne;
+               font-size: 20px;
+               cursor: pointer;
+               color: #1F2224;
+            }
+
+            .genre:hover{
+                border: 2px solid #1F2224;
+                background-color: #1F2224;
+                color: #FCEDD4;
+            }
+
+            #demographicsearch{
+                
+                position: relative;
+                display: inline-block;
+            }
+
+            #demographicsearch:hover #demographicform{
+                display: block;
+            }
+
+            #demographicform{
+               
+               background-color: #79A293;
+               cursor: pointer;
+               display: none;
+               position: absolute;
+               right: 0; 
+               min-width: 160px;
+               z-index: 1;
+            }
+
+            #demographicform form input [type=radio]{
+                 
+                cursor: pointer;
+                display: block;
+                font-family: BigCaslon;
+            }
+
+            .demographic{
+               border: 2px solid #1F2224; 
+               margin-top: 5px;
+               padding-top: 10px; 
+               padding-bottom: 10px;
+               padding-left: 20px;
+               padding-right: 20px;
+               border-radius: 0%;
+               background-color: #79A293;
+               font-family: CantataOne;
+               font-size: 20px;
+               cursor: pointer;
+               color: #1F2224;
+            }
+
+            .demographic:hover{
+                border: 2px solid #1F2224;
+                background-color: #1F2224;
+                color: #FCEDD4;
+            }
+
+            #yearsearch{
+                
+                position: relative;
+                display: inline-block;
+            }
+
+            #yearsearch:hover #yearform{
+                display: block;
+            }
+
+            #yearform{
+               
+               background-color: #79A293;
+               cursor: pointer;
+               display: none;
+               position: absolute;
+               right: 0; 
+               min-width: 160px;
+               z-index: 1;
+            }
+
+            #yearform form input [type=radio]{
+                 
+                cursor: pointer;
+                display: block;
+                font-family: BigCaslon;
+            }
+
+            .yearRange{
+               border: 2px solid #1F2224; 
+               margin-top: 5px;
+               padding-top: 10px; 
+               padding-bottom: 10px;
+               padding-left: 20px;
+               padding-right: 20px;
+               border-radius: 0%;
+               background-color: #79A293;
+               font-family: CantataOne;
+               font-size: 20px;
+               cursor: pointer;
+               color: #1F2224;
+            }
+
+            .yearRange:hover{
+                border: 2px solid #1F2224;
+                background-color: #1F2224;
+                color: #FCEDD4;
+            }
+
+
 
             .search{
                 border: 2px solid red;
+                background-color: #8DB8A8;
                 grid-area: search;
                 height: 650px;
                 display: flex;
@@ -83,146 +310,34 @@
             }
 
             input[type=search]{
-                border: 2px solid red;
-                width: 700px;
+                border: 2px solid #FCEDD4;
+                background-color: #FCEDD4;
+                width: 800px;
+                padding: 50px;
+                border-radius: 15px;
+                font-size: 20px;
+                font-family: CantataOne;
+                color: #1F2224;
+
             }
 
             
             .btn-btn-primary{
-                border: 2px solid red;
+                border: 2px solid #1F2224;
+                background-color: #8DB8A8;
+                font-size: 20px;
+                font-family: CantataOne;
+                color: #1F2224;
                 margin-left: 600px;
                 margin-top: 20px;
-            }
-            
-            /*when I say ad here, I mean some content to break up the sliders and the main search bar. they could be links to certain books or search options, up to you guys*/
-            #ad1{
-                border: 2px solid purple; 
-                grid-area: ad1;
-                height: 500px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
+                padding: 15px 33px;
+                border-radius: 0%;
             }
 
-            #adbox1{
-                border: 2px solid purple;
-                height: 450px;
-                width: 800px;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-            } 
-
-            #adbox1 h2{
-                border: 2px solid purple;
-                display: flex;
-                justify-content: flex-end;
-                margin-left: 70px;
-            }
-
-            #adbox1 button{
-                border: 2px solid purple;
-                width: 80px;
-            }
-
-
-            #slider1{
-                border: 2px solid pink; 
-                grid-area: slide1;
-                height: 400px;
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-start;
-            }
-
-            /*for now there is just a grey box but these would be the sliders*/
-            #sliderplaceholder1{
-                border: 2px solid pink; 
-                height: 300px;
-                width: 95%; 
-                margin-left: 70px;
-                background-color: lightgray;
-            }
-
-            #ad2{
-                border: 2px solid purple; 
-                grid-area: ad2;
-                height: 500px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-
-             #adbox2{
-                border: 2px solid purple;
-                height: 450px;
-                width: 800px;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-            } 
-
-            #adbox2 h2{
-                border: 2px solid purple;
-                display: flex;
-                justify-content: flex-end;
-                margin-left: 70px;
-            }
-
-            #adbox2 button{
-                border: 2px solid purple;
-                width: 80px;
-            }
-
-
-             #slider2{
-                border: 2px solid pink; 
-                grid-area: slide2;
-                height: 400px;
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-start;
-            }
-
-            #sliderplaceholder2{
-                border: 2px solid pink; 
-                height: 300px;
-                width: 95%; 
-                margin-left: 70px;
-                background-color: lightgray;
-            }
-
-            #ad3{
-                border: 2px solid purple; 
-                grid-area: ad3;
-                height: 500px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-
-             #adbox3{
-                border: 2px solid purple;
-                height: 450px;
-                width: 800px;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-            } 
-
-            #adbox3 h2{
-                border: 2px solid purple;
-                display: flex;
-                justify-content: flex-end;
-                margin-left: 70px;
-            }
-
-            #adbox3 button{
-                border: 2px solid purple;
-                width: 80px;
+            .btn-btn-primary:hover{
+                border: 2px solid #1F2224;
+                background-color: #1F2224;
+                color: #FCEDD4;
             }
 
 
@@ -232,6 +347,26 @@
                 display: flex;
                 justify-content: space-evenly;
                 padding-bottom: 70px;
+            }
+
+            footer h3{
+                margin-top: 30px;
+                margin-bottom: 30px;
+                font-family: CantataOne;
+                font-size: 23px;
+                color: #1F2224;
+
+            }
+
+            footer a{
+                text-decoration: none;
+                font-family: BigCaslon;
+                font-size: 23px;
+                color: #1F2224;
+            }
+
+            footer a:hover{
+                color: #8DB8A8;
             }
 
             .cart-button {
@@ -273,7 +408,7 @@
                     <div id="navbarlinks"> <!--this should have all the dropdownlinks we need as well as links to whatever pages-->
 
                         <div id="searchgenre">
-                            <h4>Genre</h4>
+                            <button class="dropbtn"><h4>Genre</h4></button>
                                 <div id="genreform">
                                     <form action="/search_genre" method="POST">
                                         <input type="radio" id="Biography" name="genre" value="Biography">
@@ -322,7 +457,7 @@
                                 </div>
                         </div>
                         <div id="demographicsearch">
-                            <h4>Demographic</h4>
+                            <button class="dropbtn"><h4>Demographic</h4></button>
                                 <div id="demographicform">
                                     <form action="/search_demographics" method="POST">
                                         <input type="radio" id="Adult" name="demographics" value="Adult">
@@ -339,7 +474,7 @@
                                 </div>
                         </div>
                         <div id="yearsearch">
-                            <h4>Publishing Year</h4>
+                           <button class="dropbtn"><h4>Publishing Year</h4></button>
                                 <div id="yearform">
                                     <form action="/search_year" method="POST">
                                         <input type="radio" id="0-2000" name="yearRange" value="0,2000">
@@ -386,126 +521,6 @@
                 </span>
                 <input type="submit" class="btn-btn-primary" value="Search">
             </form>
-
-            <div id="ad1"> <!--these are mostly to break up the sliders and important content, if there is anything we want to add instead do it-->
-                <div id="adbox1">
-                    <h2>Ad</h2>
-                    
-                    <button formaction="">Shop Now</button>
-                </div>
-            </div>
-            
-            <div id="slider1">
-                <h1>Check Out What's New in the Corner</h1>
-                <div id="sliderplaceholder1">
-                    <!--slider here-->
-                </div>
-                
-            </div>
-
-            <div id="ad2"> 
-                 <div id="adbox2">
-                    <h2>Ad</h2>
-                    
-                        <button formaction="">Shop Now</button>
-                 </div>
-            </div>
-
-            <div id="slider2">
-                <h1>Check Out Our Fantasy</h1>
-                <div id="sliderplaceholder2">
-                    <!--slider here-->
-                </div>
-            </div>
-
-            <div id="ad3"> 
-                <div id="adbox3">
-                    <h2>Ad</h2>
-                    
-                        <button formaction="">Shop Now</button>
-                 </div>
-            </div>
-
-            <!--<h2>Genre</h2>
-            <form action="/search_genre" method="POST">
-                <input type="radio" id="Biography" name="genre" value="Biography">
-                <label for="biography">Biography</label><br>
-
-                <input type="radio" id="Business" name="genre" value="Business">
-                <label for="business">Business</label><br>
-
-                <input type="radio" id="Children" name="genre" value="Children">
-                <label for="children">Children</label><br>
-
-                <input type="radio" id="Classic" name="genre" value="Classic">
-                <label for="children">Classic</label><br>
-
-                <input type="radio" id="Fantasy" name="genre" value="Fantasy">
-                <label for="fantasy">Fantasy</label><br>
-
-                <input type="radio" id="Fiction" name="genre" value="Fiction">
-                <label for="fiction">Fiction</label><br>
-
-                <input type="radio" id="Literature" name="genre" value="Literature">
-                <label for="literature">Literature</label><br>
-
-                <input type="radio" id="Non-Fiction" name="genre" value="Non-Fiction">
-                <label for="non-fiction">Non-Fiction</label><br>
-
-                <input type="radio" id="Romance" name="genre" value="Romance">
-                <label for="romance">Romance</label><br>
-
-                <input type="radio" id="Science Fiction" name="genre" value="Science Fiction">
-                <label for="sciencefiction">Science Fiction</label><br>
-
-                <input type="radio" id="Self-Help" name="genre" value="Self-Help">
-                <label for="self-help">Self-Help</label><br>
-
-                <input type="radio" id="Textbooks" name="genre" value="Textbooks">
-                <label for="textbooks">Textbooks</label><br>
-
-                <input type="radio" id="Travel" name="genre" value="Travel">
-                <label for="travel">Travel</label><br>
-
-                <input type="submit" class="genre" value="submit">
-                
-            </form>
-
-            <h2>Demographics</h2>
-            <form action="/search_demographics" method="POST">
-                <input type="radio" id="Adult" name="demographics" value="Adult">
-                <label for="Adult">Adult</label><br>
-
-                <input type="radio" id="Teens" name="demographics" value="Teens">
-                <label for="Teens">Teens</label><br>
-
-                <input type="radio" id="Kids" name="demographics" value="Kids">
-                <label for="Kids">Kids</label><br>
-
-                <input type="submit" class="demographic" value="Search">
-            </form>
-
-            <h2>Year Published</h2>
-            <form action="/search_year" method="POST">
-                <input type="radio" id="0-2000" name="yearRange" value="0,2000">
-                <label for="0-2000">Before 2000</label><br>
-
-                <input type="radio" id="2001-2010" name="yearRange" value="2001,2010">
-                <label for="2001-2010">2001 - 2010</label><br>
-
-                <input type="radio" id="2011-2020" name="yearRange" value="2011,2020">
-                <label for="2011-2020">2011 - 2020</label><br>
-
-                <input type="radio" id="2021-2030" name="yearRange" value="2021,2030">
-                <label for="2021-2030">2021 and Beyond</label><br>
-
-                <input type="submit" class="yearRange" value="submit">
-            </form>-->
-
-            <script>
-
-            </script>
-
             <footer>
                 <div id="footerlinkcolumn1">
                     <h3>Company</h3>

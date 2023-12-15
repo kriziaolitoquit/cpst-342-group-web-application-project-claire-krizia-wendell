@@ -9,143 +9,400 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <style>
 
+            html, body, div, span, object, iframe,
+    h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+    abbr, address, cite, code,
+    del, dfn, em, img, ins, kbd, q, samp,
+    small, strong, sub, sup, var,
+    b, i,
+    dl, dt, dd, ol, ul, li,
+    fieldset, form, label, legend,
+    table, caption, tbody, tfoot, thead, tr, th, td,
+    article, aside, canvas, details, figcaption, figure, 
+    footer, header, hgroup, menu, nav, section, summary,
+    time, mark, audio, video {
+        margin:0;
+        padding:0;
+        border:0;
+        outline:0;
+        font-size:100%;
+        vertical-align:baseline;
+        background:transparent;
+
+   
+
+    }
+
+    @font-face {
+        font-family: Limelight;
+        src: url(/assets/Limelight-Regular\ copy.ttf);
+    }
+
+    @font-face {
+        font-family: CantataOne;
+        src: url(/assets/CantataOne-Regular\ copy.ttf);
+    }
+
+    @font-face {
+        font-family: BigCaslon;
+        src: url(/assets/BigCaslon.ttf);
+    }
+
             #container{
                 border: 3px solid green;
                 width: 100%;
+                background-color: #FCEDD4;
                 grid-template-columns: 50% 50%;
-                grid-template-rows: 100px auto auto;
+                grid-template-rows: 130px auto auto;
                 grid-template-areas: "head head"
                                     "about about"
                                     "foot foot";
             }
 
-            header{
-                border: 2px solid blue;
+             header{
                 grid-area: head;
+                background-color: #8DB8A8;
             }
 
-            #logoimg{
-                border: 2px solid blue;
+            header h1{
+                padding-top: 30px;
+                font-family: CantataOne;
+                font-size: 30px;
+                color: #1F2224;
+
+            }
+
+            /*I have somethings I'm working on, for now this is just a square*/
+
+            #logoimg {
                 display: flex;
                 justify-content: center;
                 align-items: center;
             }
 
             #logoimg a img{
-                border: 2px solid blue;
                 width: 50px;
                 height: 50px;
             }
-
+            
             #loginandshoppingcart{
-                border: 2px solid blue;
                 display: flex;
                 justify-content: flex-end;
                 margin-right: 10px;
             }
+            
 
             #loginbutton{
-               border: 2px solid blue; 
-               margin-right: 10px;
+               margin-right: 20px;
+
             }
 
+            .login-button{
+                font-family: CantataOne;
+                font-size: 20px;
+                color: #1F2224;
+                padding-top: 10px;
+                padding-bottom: 10px;  
+                padding-left: 20px; 
+                padding-right: 20px;
+                border-radius: 0%;
+                background-color: #8DB8A8;
+                border: 2px solid #1F2224;
+            }
+
+            .login-button:hover{
+                border: 2px solid #1F2224;
+                background-color: #1F2224;
+                color: #FCEDD4;
+            }
+
+
+            /* will need to get an icon for this*/
             #shoppingcart{
-                border: 2px solid blue; 
+                 
                 margin-right: 10px;
             }
 
             #navbarlinks{
-               border: 2px solid blue; 
+                
                display: flex;
                justify-content: space-evenly; 
                align-items: center;
-               height: 30px;
                width: 90%;
-               margin-left: 110px;
+               margin-left: 120px;
             }
 
-            /*these are for the dropdown, they are not displayed for now to show how the nav bar may look */
-            #navbarlinks #genreform form{
-                display: none;
+            #searchgenre{
+                
+                position: relative;
+                display: inline-block;
             }
 
-            #navbarlinks #demographicform form{
-                 display: none;
+            #searchgenre:hover #genreform{
+                display: block;
             }
 
-            #navbarlinks #yearform form{
-                 display: none;
+            .dropbtn{
+                border: 2px solid #8DB8A8;
+                padding-left: 20px;
+                padding-right: 20px;
+                border-radius: 0%;
+                cursor: pointer;
+                background-color: #8DB8A8;
+            }
+
+            .dropbtn h4{
+                font-family: CantataOne;
+                font-size: 25px;
+                color: #1F2224;
+            }
+
+            #genreform{
+               
+               background-color: #79A293;
+               cursor: pointer;
+               display: none;
+               position: absolute;
+               right: 0; 
+               min-width: 160px;
+               z-index: 1;
+            }
+
+            #genreform form input [type=radio]{
+                 
+                cursor: pointer;
+                display: block;
+                font-family: BigCaslon;
+            }
+
+            .genre{
+               border: 2px solid #1F2224; 
+               margin-top: 5px;
+               padding-top: 10px; 
+               padding-bottom: 10px;
+               padding-left: 20px;
+               padding-right: 20px;
+               border-radius: 0%;
+               background-color: #79A293;
+               font-family: CantataOne;
+               font-size: 20px;
+               cursor: pointer;
+               color: #1F2224;
+            }
+
+            .genre:hover{
+                border: 2px solid #1F2224;
+                background-color: #1F2224;
+                color: #FCEDD4;
+            }
+
+            #demographicsearch{
+                
+                position: relative;
+                display: inline-block;
+            }
+
+            #demographicsearch:hover #demographicform{
+                display: block;
+            }
+
+            #demographicform{
+               
+               background-color: #79A293;
+               cursor: pointer;
+               display: none;
+               position: absolute;
+               right: 0; 
+               min-width: 160px;
+               z-index: 1;
+            }
+
+            #demographicform form input [type=radio]{
+                 
+                cursor: pointer;
+                display: block;
+                font-family: BigCaslon;
+            }
+
+            .demographic{
+               border: 2px solid #1F2224; 
+               margin-top: 5px;
+               padding-top: 10px; 
+               padding-bottom: 10px;
+               padding-left: 20px;
+               padding-right: 20px;
+               border-radius: 0%;
+               background-color: #79A293;
+               font-family: CantataOne;
+               font-size: 20px;
+               cursor: pointer;
+               color: #1F2224;
+            }
+
+            .demographic:hover{
+                border: 2px solid #1F2224;
+                background-color: #1F2224;
+                color: #FCEDD4;
+            }
+
+            #yearsearch{
+                
+                position: relative;
+                display: inline-block;
+            }
+
+            #yearsearch:hover #yearform{
+                display: block;
+            }
+
+            #yearform{
+               
+               background-color: #79A293;
+               cursor: pointer;
+               display: none;
+               position: absolute;
+               right: 0; 
+               min-width: 160px;
+               z-index: 1;
+            }
+
+            #yearform form input [type=radio]{
+                 
+                cursor: pointer;
+                display: block;
+                font-family: BigCaslon;
+            }
+
+            .yearRange{
+               border: 2px solid #1F2224; 
+               margin-top: 5px;
+               padding-top: 10px; 
+               padding-bottom: 10px;
+               padding-left: 20px;
+               padding-right: 20px;
+               border-radius: 0%;
+               background-color: #79A293;
+               font-family: CantataOne;
+               font-size: 20px;
+               cursor: pointer;
+               color: #1F2224;
+            }
+
+            .yearRange:hover{
+                border: 2px solid #1F2224;
+                background-color: #1F2224;
+                color: #FCEDD4;
             }
 
             #aboutpage{
-                border: 2px solid purple;
+                
                 grid-area: about;
                 display: flex;
                 justify-content: center;
             }
 
             #aboutimage{
-                border: 2px solid purple;
+                
                 width: 40%;
                 height: 800px;
             }
 
             #aboutblurb{
-                border: 2px solid purple;
+                
                 width: 60%;
+                color: #1F2224;
+                background-color: #FCEDD4;
             }
 
             #blurb{
-                border: 2px solid purple;
+                
+                margin-top: 90px;
             }
 
             #blurb h1{
-                border: 2px solid purple;
+                
                 margin-left: 30px;
+                margin-top: 30px;
+                font-family: CantataOne;
+                font-size: 23px;
             }
 
             #blurb p{
-               border: 2px solid purple;
-               width: 600px;
+               
+               font-family: BigCaslon;
+               font-size: 20px;
+               margin-top: 60px;
+               width: 400px;
                margin-left: 40px;
                text-align: justify; 
             }
 
             #address{
-                border: 2px solid purple;
-                margin-top: 35%;
+                
+                margin-top: 70px;
             }
 
             #address strong{
-               border: 2px solid purple;
+               
                margin-left: 30px; 
+               font-family: CantataOne;
+               font-size: 23px;
             }
 
             #address p{
-               border: 2px solid purple; 
+                
                margin-left: 40px;
+               margin-top: 30px;
+               font-family: BigCaslon;
+               font-size: 20px;
             }
 
             #hours{
-               border: 2px solid purple; 
+                
             }
 
             #hours strong{
-                border: 2px solid purple;
+                
                 margin-left: 30px; 
+                margin-top: 30px;
+                margin-bottom: 40px;
+                font-family: CantataOne;
+                font-size: 23px;
             }
 
             #hours p{
-               border: 2px solid purple; 
+                
                margin-left: 40px; 
+               font-family: BigCaslon;
+               font-size: 20px;
             }
 
             footer{
-                border: 2px solid aqua;
                 grid-area: foot;
                 display: flex;
                 justify-content: space-evenly;
                 padding-bottom: 70px;
+                background-color: #FCEDD4;
+            }
+
+            footer h3{
+                margin-top: 30px;
+                margin-bottom: 30px;
+                font-family: CantataOne;
+                font-size: 23px;
+                color: #1F2224;
+
+            }
+
+            footer a{
+                text-decoration: none;
+                font-family: BigCaslon;
+                font-size: 23px;
+                color: #1F2224;
+            }
+
+            footer a:hover{
+                color: #8DB8A8;
             }
 
             .cart-button {
@@ -270,7 +527,7 @@
 
             <div id="aboutpage">
                 <div id="aboutimage">
-                    <img src="">
+                    <img src="/assets/pexels-pixabay-433333.jpg" alt="book picture">
                 </div>
                 <div id="aboutblurb">
                     <div id="blurb">

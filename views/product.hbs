@@ -2,7 +2,6 @@
 <html>
     <head>
         <title>The Digital Book Corner</title>
-        <link rel="stylesheet" href='/css/style.css'>
         <meta charset="utf-8" />
         <meta name="description" content="Digital Book Library">
         <meta name="keywords" content="library, books, digital, academic, fiction, non-fiction">
@@ -10,8 +9,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
         <style>
             #container {
-                border: 3px solid green;
                 width: 100%;
+                background-color: #FCEDD4;
                 grid-template-columns: 33% 33% 33%;
                 grid-template-rows: 100px, auto auto auto auto;
                 grid-template-areas: "head head head"
@@ -21,72 +20,277 @@
                                     "foot foot foot";
             }
 
-            header{
-                border: 2px solid blue;
-                grid-area: head;
-            }
+            html, body, div, span, object, iframe,
+    h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+    abbr, address, cite, code,
+    del, dfn, em, img, ins, kbd, q, samp,
+    small, strong, sub, sup, var,
+    b, i,
+    dl, dt, dd, ol, ul, li,
+    fieldset, form, label, legend,
+    table, caption, tbody, tfoot, thead, tr, th, td,
+    article, aside, canvas, details, figcaption, figure, 
+    footer, header, hgroup, menu, nav, section, summary,
+    time, mark, audio, video {
+        margin:0;
+        padding:0;
+        border:0;
+        outline:0;
+        font-size:100%;
+        vertical-align:baseline;
+        background:transparent;
 
-            #logoimg{
-                border: 2px solid blue;
+   
+
+    }
+
+        @font-face {
+            font-family: Limelight;
+            src: url(/assets/Limelight-Regular\ copy.ttf);
+        }
+
+        @font-face {
+            font-family: CantataOne;
+            src: url(/assets/CantataOne-Regular\ copy.ttf);
+        }
+
+        @font-face {
+            font-family: BigCaslon;
+            src: url(/assets/BigCaslon.ttf);
+        }
+
+            header{
+                grid-area: head;
+                background-color: #8DB8A8;
+            }
+            /*I have somethings I'm working on, for now this is just a square*/
+
+            #logoimg {
                 display: flex;
                 justify-content: center;
                 align-items: center;
             }
 
             #logoimg a img{
-                border: 2px solid blue;
                 width: 50px;
                 height: 50px;
             }
-
+            
             #loginandshoppingcart{
-                border: 2px solid blue;
                 display: flex;
                 justify-content: flex-end;
                 margin-right: 10px;
             }
+            
 
             #loginbutton{
-               border: 2px solid blue; 
-               margin-right: 10px;
+               margin-right: 20px;
+
             }
 
+            .login-button{
+                font-family: CantataOne;
+                font-size: 20px;
+                color: #1F2224;
+                padding-top: 10px;
+                padding-bottom: 10px;  
+                padding-left: 20px; 
+                padding-right: 20px;
+                border-radius: 0%;
+                background-color: #8DB8A8;
+                border: 2px solid #1F2224;
+            }
+
+            .login-button:hover{
+                border: 2px solid #1F2224;
+                background-color: #1F2224;
+                color: #FCEDD4;
+            }
+
+
+            /* will need to get an icon for this*/
             #shoppingcart{
-                border: 2px solid blue; 
+                 
                 margin-right: 10px;
             }
 
-            #navbarlinks{
-               border: 2px solid blue; 
+            #navbarlinks{ 
                display: flex;
                justify-content: space-evenly; 
                align-items: center;
-               height: 30px;
                width: 90%;
-               margin-left: 110px;
+               margin-left: 120px;
             }
 
             /*these are for the dropdown, they are not displayed for now to show how the nav bar may look */
-            #navbarlinks #genreform form{
-                display: none;
+            #navbarlinks #searchgenre{
+                
+                position: relative;
+                display: inline-block;
             }
 
-            #navbarlinks #demographicform form{
-                 display: none;
+           #navbarlinks #searchgenre:hover #genreform{
+                display: block;
             }
 
-            #navbarlinks #yearform form{
-                 display: none;
+            #navbarlinks .dropbtn{
+                border: 2px solid #8DB8A8;
+                padding-left: 20px;
+                padding-right: 20px;
+                border-radius: 0%;
+                cursor: pointer;
+                background-color: #8DB8A8;
+            }
+
+            #navbarlinks .dropbtn h4{
+                font-family: CantataOne;
+                font-size: 25px;
+                color: #1F2224;
+            }
+
+            #navbarlinks #genreform{
+               
+               background-color: #79A293;
+               cursor: pointer;
+               display: none;
+               position: absolute;
+               right: 0; 
+               min-width: 160px;
+               z-index: 1;
+            }
+
+            #navbarlinks #genreform form input [type=radio]{
+                 
+                cursor: pointer;
+                display: block;
+                font-family: BigCaslon;
+            }
+
+            #navbarlinks .genre{
+               border: 2px solid #1F2224; 
+               margin-top: 5px;
+               padding-top: 10px; 
+               padding-bottom: 10px;
+               padding-left: 20px;
+               padding-right: 20px;
+               border-radius: 0%;
+               background-color: #79A293;
+               font-family: CantataOne;
+               font-size: 20px;
+               cursor: pointer;
+               color: #1F2224;
+            }
+
+            #navbarlinks .genre:hover{
+                border: 2px solid #1F2224;
+                background-color: #1F2224;
+                color: #FCEDD4;
+            }
+
+            #navbarlinks #demographicsearch{
+                
+                position: relative;
+                display: inline-block;
+            }
+
+            #navbarlinks #demographicsearch:hover #demographicform{
+                display: block;
+            }
+
+            #navbarlinks #demographicform{
+               
+               background-color: #79A293;
+               cursor: pointer;
+               display: none;
+               position: absolute;
+               right: 0; 
+               min-width: 160px;
+               z-index: 1;
+            }
+
+            #navbarlinks #demographicform form input [type=radio]{
+                 
+                cursor: pointer;
+                display: block;
+                font-family: BigCaslon;
+            }
+
+            #navbarlinks .demographic{
+               border: 2px solid #1F2224; 
+               margin-top: 5px;
+               padding-top: 10px; 
+               padding-bottom: 10px;
+               padding-left: 20px;
+               padding-right: 20px;
+               border-radius: 0%;
+               background-color: #79A293;
+               font-family: CantataOne;
+               font-size: 20px;
+               cursor: pointer;
+               color: #1F2224;
+            }
+
+            #navbarlinks .demographic:hover{
+                border: 2px solid #1F2224;
+                background-color: #1F2224;
+                color: #FCEDD4;
+            }
+
+            #navbarlinks #yearsearch{
+                
+                position: relative;
+                display: inline-block;
+            }
+
+            #navbarlinks #yearsearch:hover #yearform{
+                display: block;
+            }
+
+            #navbarlinks #yearform{
+               
+               background-color: #79A293;
+               cursor: pointer;
+               display: none;
+               position: absolute;
+               right: 0; 
+               min-width: 160px;
+               z-index: 1;
+            }
+
+            #navbarlinks #yearform form input [type=radio]{
+                 
+                cursor: pointer;
+                display: block;
+                font-family: BigCaslon;
+            }
+
+            #navbarlinks .yearRange{
+               border: 2px solid #1F2224; 
+               margin-top: 5px;
+               padding-top: 10px; 
+               padding-bottom: 10px;
+               padding-left: 20px;
+               padding-right: 20px;
+               border-radius: 0%;
+               background-color: #79A293;
+               font-family: CantataOne;
+               font-size: 20px;
+               cursor: pointer;
+               color: #1F2224;
+            }
+
+            #navbarlinks .yearRange:hover{
+                border: 2px solid #1F2224;
+                background-color: #1F2224;
+                color: #FCEDD4;
             }
 
             #content{
-               border: 2px solid pink;
                 grid-area: content; 
                 display: flex;
             }
 
             ul{
-               border: 2px solid pink; 
                display: flex;
                flex-wrap: wrap;  
                justify-content: flex-start;
@@ -95,7 +299,6 @@
             }
 
             li{
-                border: 2px solid pink;
                 width: 300px; 
                 height: 300px;
                 display: flex;
@@ -111,22 +314,200 @@
                 height: 150px;
             }
 
+            li h6{
+                font-family: CantataOne;
+                font-size: 21px;
+                color: #1F2224;
+
+            }
+
+            li p{
+                font-family: BigCaslon;
+               font-size: 21px;
+                color: #1F2224; 
+            }
+
+            #sidebarsearchgenre #genreform .genre{
+                padding-top: 10px;
+                padding-bottom: 10px;  
+                padding-left: 20px; 
+                padding-right: 20px;
+                border-radius: 0%; 
+                font-family: CantataOne;
+                font-size: 21px;
+                color: #1F2224;
+                background-color: #FCEDD4;
+                border: 2px solid #79A293;
+                cursor: pointer;
+                margin-bottom: 20px;
+            }
+
+             #sidebarsearchgenre #genreform .genre:hover{
+                color: #FCEDD4;
+                background-color: #8DB8A8;
+                border: 2px solid #8DB8A8;
+             }
+
+            #sidebardemographicsearch #demographicform .demographic{
+                padding-top: 10px;
+                padding-bottom: 10px;  
+                padding-left: 20px; 
+                padding-right: 20px;
+                border-radius: 0%; 
+                font-family: CantataOne;
+                font-size: 21px;
+                color: #1F2224;
+                background-color: #FCEDD4;
+                border: 2px solid #79A293;
+                cursor: pointer;
+                margin-bottom: 20px;
+            }
+
+             #sidebardemographicsearch #demographicform .demographic:hover{
+                color: #FCEDD4;
+                background-color: #8DB8A8;
+                border: 2px solid #8DB8A8;
+             }
+
+             #sidecaryearsearch #yearform .yearRange{
+                padding-top: 10px;
+                padding-bottom: 10px;  
+                padding-left: 20px; 
+                padding-right: 20px;
+                border-radius: 0%; 
+                font-family: CantataOne;
+                font-size: 21px;
+                color: #1F2224;
+                background-color: #FCEDD4;
+                border: 2px solid #79A293;
+                cursor: pointer;
+                margin-bottom: 20px;
+            }
+
+             #sidecaryearsearch #yearform .yearRange:hover{
+                color: #FCEDD4;
+                background-color: #8DB8A8;
+                border: 2px solid #8DB8A8;
+                
+             }
+
+            li button{
+                padding-top: 10px;
+                padding-bottom: 10px;  
+                padding-left: 20px; 
+                padding-right: 20px;
+                border-radius: 0%; 
+                font-family: CantataOne;
+                font-size: 21px;
+                color: #1F2224;
+                background-color: #FCEDD4;
+                border: 2px solid #79A293;
+                cursor: pointer;
+
+            }
+
+            li button:hover{
+                color: #FCEDD4;
+                background-color: #8DB8A8;
+                border: 2px solid #8DB8A8;
+            }
+
+            .btn-btn-primary{
+               padding-top: 10px;
+                padding-bottom: 10px;  
+                padding-left: 20px; 
+                padding-right: 20px;
+                border-radius: 0%; 
+                font-family: CantataOne;
+                font-size: 21px;
+                color: #1F2224;
+                background-color: #FCEDD4;
+                border: 2px solid #79A293; 
+                cursor: pointer;
+            }
+
+            .btn-btn-primary:hover{
+                color: #FCEDD4;
+                background-color: #8DB8A8;
+                border: 2px solid #8DB8A8;
+            }
+
             #sidebar{
-                border: 2px solid red;
+                border: 2px solid #1F2224;
                 width: 20%;
             }
 
+            #sidebarsearchgenre h4{
+                font-family: CantataOne;
+                font-size: 30px;
+                color: #1F2224;
+                padding-bottom: 20px;
+            }
+
+            #sidebarsearchgenre input [type=radio]{
+                font-family: BigCaslon;
+                font-size: 20px;
+                color: #1F2224;
+                padding-bottom: 20px;
+            }
+
+            #sidebardemographicsearch h4{
+                font-family: CantataOne;
+                font-size: 30px;
+                color: #1F2224;
+                padding-bottom: 20px;
+            }
+
+            #sidebardemographicsearch input [type=radio]{
+                font-family: BigCaslon;
+                font-size: 20px;
+                color: #1F2224;
+                padding-bottom: 20px;
+            }
+
+            #sidecaryearsearch h4{
+                font-family: CantataOne;
+                font-size: 30px;
+                color: #1F2224;
+                padding-bottom: 20px;
+            }
+
+            #sidecaryearsearch input [type=radio]{
+                font-family: BigCaslon;
+                font-size: 20px;
+                color: #1F2224;
+                padding-bottom: 20px;
+            }
+
             #productlistgrid{
-                border: 2px solid purple;
                 width: 80%;
             }
 
             footer{
-                border: 2px solid aqua;
                 grid-area: foot;
                 display: flex;
                 justify-content: space-evenly;
                 padding-bottom: 70px;
+            }
+
+            footer h3{
+                margin-top: 30px;
+                margin-bottom: 30px;
+                font-family: CantataOne;
+                font-size: 23px;
+                color: #1F2224;
+
+            }
+
+            footer a{
+                text-decoration: none;
+                font-family: BigCaslon;
+                font-size: 23px;
+                color: #1F2224;
+            }
+
+            footer a:hover{
+                color: #8DB8A8;
             }
 
             .cart-button {
@@ -202,7 +583,7 @@
                                     <input type="radio" id="Travel" name="genre" value="Travel">
                                     <label for="travel">Travel</label><br>
 
-                                    <input type="submit" class="genre" value="submit">
+                                    <input type="submit" class="genre" value="Submit">
                 
                                 </form>
 
@@ -221,7 +602,7 @@
                                     <input type="radio" id="Kids" name="demographics" value="Kids">
                                     <label for="Kids">Kids</label><br>
 
-                                    <input type="submit" class="demographic" value="Search">
+                                    <input type="submit" class="demographic" value="Submit">
                                 </form>
                             </div>
                     </div>
@@ -241,7 +622,7 @@
                                     <input type="radio" id="2021-2030" name="yearRange" value="2021,2030">
                                     <label for="2021-2030">2021 and Beyond</label><br>
 
-                                    <input type="submit" class="yearRange" value="submit">
+                                    <input type="submit" class="yearRange" value="Submit">
                                 </form>
                             </div>
                     </div>
@@ -296,7 +677,7 @@
                                         <input type="radio" id="Travel" name="genre" value="Travel">
                                         <label for="travel">Travel</label><br>
 
-                                        <input type="submit" class="genre" value="submit">
+                                        <input type="submit" class="genre" value="Submit">
                     
                                     </form>
 
@@ -315,7 +696,7 @@
                                         <input type="radio" id="Kids" name="demographics" value="Kids">
                                         <label for="Kids">Kids</label><br>
 
-                                        <input type="submit" class="demographic" value="Search">
+                                        <input type="submit" class="demographic" value="Submit">
                                     </form>
                                 </div>
                         </div>
@@ -335,7 +716,7 @@
                                         <input type="radio" id="2021-2030" name="yearRange" value="2021,2030">
                                         <label for="2021-2030">2021 and Beyond</label><br>
 
-                                        <input type="submit" class="yearRange" value="submit">
+                                        <input type="submit" class="yearRange" value="Submit">
                                     </form>
                                 </div>
                         </div>
@@ -345,13 +726,15 @@
                     <ul>
                         {{#each rows}}
                             <li>
-                                <img src="">
+                                <img src="color: #FCEDD4;
+                background-color: #8DB8A8;
+                border: 2px solid #8DB8A8;">
                                 <h6>Book Title: {{this.BookTitle}}</h6>
                                 <p>Author: {{this.Author}}</p>
                                 <p>Number of Copies: {{this.NumCopies}}</p>
                                 <p>Price: {{this.Price}}</p>
                                 <form action="/productdesc" method="GET">
-                                    <input type="submit" class="btn btn-primary" value="Details">
+                                    <input type="submit" class="btn-btn-primary" value="Details">
                                 </form>
                                 <form action="/addToCart" method="POST">
                                     <input type="hidden" name="BookTitle" value="{{this.BookTitle}}">

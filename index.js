@@ -26,7 +26,7 @@ app.get('/external-api', async (req, res) => {
   });
 
 //for our files, css, pictures and pdfs//
-app.use(express.static('assets'))
+app.use(express.static('assets'));
 
 //view templateing setup//
 app.set('view engine', 'hbs');
@@ -42,6 +42,8 @@ app.use(express.urlencoded({ extended: true }));
 
 // Parse URL-encoded bodies (as sent by HTML forms)
 app.use(bodyParser.urlencoded({ extended: true }));
+
+
 
 //Route to home get all items
 app.get('/', function (req, res) {
