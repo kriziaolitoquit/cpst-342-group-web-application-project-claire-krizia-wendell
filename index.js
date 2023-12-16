@@ -100,155 +100,6 @@ app.post('/search_year', function(req, res){
 
 });
 
-/*app.post('/getFullDetails' , function(req, res){
-
-    var detailsEntry = req.body;
-
-    res.render('productdesc', ID, detailsEntry);
-});*/
-
-//route to home for priceRange
-
-/*app.post('/search_price', function(req, res){
-    // Extract the priceEntry from the request body
-    var priceEntry = req.body.priceRange;
-
-    // Log the received priceEntry for debugging
-    console.log(priceEntry);
-
-    // Call the getPriceRangeBookTitle function from dbOperations
-    dbOperations.getPriceRangeBookList(priceEntry, res);
-});*/
-
-//create search function
-
-//const searchInput = document.querySelector('.input')
-
-//event listener for search function 
-
-/*searchInput.addEventListener("input", (e) =>{
-
-    //declare event target
-    let value = e.target.value
-
-    //check if input exists
-    if (value && value.trim().length> 0){
-        
-        value = value.trim().toLowerCase()
-
-        setList(bookList.filter(BookTitle => {
-            return bookList.BookTitle.includes(value)
-        }))
-
-        setList(bookList.filter(Author => {
-            return bookList.BookTitle.includes(value)
-        }))
-
-        setList(bookList.filter(Genre => {
-            return bookList.Genre.includes(value)
-        }))
-
-        setList(bookList.filter(PublishedYear => {
-            return bookList.PublishedYear.include(value)
-        }))
-
-        setList(bookList.filter(NumberOfCopies => {
-            return bookList.NumberOfCopies.include(value)
-        }))
-
-    } else{
-        // return nothing
-        clearList()
-    }
-})
-
-//creating and declaring a function for a setlist
-function setList(results){
-    for (const person of results){
-        // creating a li element for each result item
-        const resultItem = document.createElement('li')
-
-        // adding a class to each item of the results
-        resultItem.classList.add('result-item')
-
-        // grabbing the name of the current point of the loop and adding the name as the list item's text
-        const text = document.createTextNode(bookList)
-
-        // appending the text to the result item
-        resultItem.appendChild(text)
-
-        // appending the result item to the list
-        list.appendChild(resultItem)
-    }
-}
-
-const clearButton = document.getElementById('clear')
-
-clearButton.addEventListener("click", () =>{
-
-})
-
-function clearList(){
-    // looping through each child of the search results list and remove each child
-    while (list.firstChild){
-        list.removeChild(list.firstChild)
-    }
-}
-
-//Route to product page
-
-app.get('/', function(req, res){
-    res.render('home.hbs');
-})*/
-
-
-//Route to load product data
-/*app.get("/", (req, res) => {
-    const query = `SELECT * FROM product LIMIT 3`;
-
-    //Execute Query
-    connection.query (query, (error, result) => {
-        if(!req.session.cart) {
-            req.session.cart = [];
-        }
-
-        res.render('product', { products : result, cart : req.session.cart});
-    });
-});
-
-
-
-//Create Route for Add Item into Cart 
-app.post('/add_cart', (req, res) => {
-
-    const Id = req.body.ID;
-    const BookTitle = req.body.BookTitle;
-    const Price = req.body.Price;
-
-    let coutn = 0;
-
-    for (let i = 0; i < req.session.cart.length; 1++){
-
-    if (req.session.cart[i].ID === ID)
-        {
-            req.session.cart[i].quantity += 1;
-
-            count++;
-         }
-    }    
-    if(count === 0){
-        const cart_data ={
-            ID : ID,
-            BookTitle : BookTitle,
-            Price : parseFloat(Price),
-            quantity : 1
-        };
-
-        req.session.cart.pusj(cart_data);
-    }
-
-    res.redirect('/shoppingCart')
-})
 
 //Route to Remove Item form cart
 app.post('/delete_item', function (req, res) {
@@ -258,28 +109,47 @@ app.post('/delete_item', function (req, res) {
 	
  });
 
-//Route to Shopping page
 // Route to handle adding items to the cart
-/*app.post('/addToCart', (req, res) => {
-    var { BookTitle, Price } = req.body;
 
-    console.log({index_cart: req.body});
+ //Initialize local cart
+
+ //console.log('Before initialization:', app.locals.cart);
+
+ // Initialize app.locals.cart as an empty array
+ app.locals.cart = [];
+ 
+ //console.log('After initialization:', app.locals.cart);
+
+  app.post('/addToCart', (req, res) => {
+    var { bookTitle, price } = req.body;
+
+    var data = {index_cart: req.body}
+
+    //console.log(data);
+
+    var bookTitle = data.index_cart.BookTitle;
+    var price = data.index_cart.Price;
+
+    //console.log('Book Title:', bookTitle);
+    //console.log('Price:', price);
 
     // Access the cart from app.locals instead of req.session
+
     var cart = app.locals.cart;
 
-    //console.log(cart);*/
-    
-
     // Add the item to the cart (you may want to check for duplicates or perform additional checks)
-    //cart.push({
-       // BookTitle: BookTitle,
-        //Price: Price,
-    //});
+    cart.push({
+        bookTitle: bookTitle,
+        price: price,
+    });
+
+    //console.log(cart);
 
     // Respond with a success message or updated cart data
-    //res.json({ message: 'Item added to the cart', cart: cart });
-    //});
+
+    res.json({ message: 'Item added to the cart', cart: cart });
+    });
+    
 
 app.get('/addToCart', (req, res) => {
      //Render your shopping page here

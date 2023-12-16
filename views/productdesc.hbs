@@ -65,8 +65,9 @@
             }
 
             #logoimg a img{
-                width: 50px;
-                height: 50px;
+                margin-top: 45px;
+                width: 120px;
+                height: 120px;
             }
             
             #loginandshoppingcart{
@@ -416,9 +417,10 @@
         <div id="aboutcontainer">
         
             <header>
-                <div id="logoimg">
-                    <a href="/"><img src="./BookLogo.jpg" alt="logo"></a><!--this route doesn't seem to work-->
-                </div>
+              <h1>The Digital Book Corner</h1>
+                    <div id="logoimg">
+                        <a href="/"><img src="./BookLogo.jpg" alt="logo"></a>
+                    </div>
                 <div id="loginandshoppingcart">
                       <div id="loginbutton">
                             <button class="login-button" onclick="location.href='/login'">Login</button>
@@ -533,7 +535,7 @@
                     <div id="price">
                         <p>Price: {{this.Price}}</p>
                     </div>
-                    <form action="/addToCart" method="GET">
+                    <form action="/addToCart" method="POST">
                         <input type="hidden" name="BookTitle" value="{{this.BookTitle}}">
                         <input type="hidden" name="Price" value="{{this.Price}}">
                         <input type="submit" value="Add to Cart">

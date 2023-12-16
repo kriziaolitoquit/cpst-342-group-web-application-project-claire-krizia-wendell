@@ -18,7 +18,7 @@
     b, i,
     dl, dt, dd, ol, ul, li,
     fieldset, form, label, legend,
-    table, caption, tbody, tfoot, thead, tr, th, td,
+    table, caption, tbody, tfoot, thead, tr,
     article, aside, canvas, details, figcaption, figure, 
     footer, header, hgroup, menu, nav, section, summary,
     time, mark, audio, video {
@@ -29,8 +29,6 @@
         font-size:100%;
         vertical-align:baseline;
         background:transparent;
-
-   
 
     }
 
@@ -48,7 +46,17 @@
 
             }
 
-            /*I have somethings I'm working on, for now this is just a square*/
+            h2 {
+                margin-top: 20px;
+
+            }
+
+            tr {
+                margin-top: 20px;
+            }
+             th td {
+                padding: 10px; /* Adjust the value based on your preference */
+            }
 
             #logoimg {
                 display: flex;
@@ -57,10 +65,10 @@
             }
 
             #logoimg a img{
-                width: 50px;
-                height: 50px;
+                width: 300px;
+                height: 300px;
             }
-            
+
             #loginandshoppingcart{
                 display: flex;
                 justify-content: flex-end;
@@ -90,13 +98,6 @@
                 border: 2px solid #1F2224;
                 background-color: #1F2224;
                 color: #FCEDD4;
-            }
-
-
-            /* will need to get an icon for this*/
-            #shoppingcart{
-                 
-                margin-right: 10px;
             }
 
             #navbarlinks{
@@ -290,8 +291,9 @@
             }
 
             #logoimg a img{
-                width: 50px;
-                height: 50px;
+                width: 115px;
+                height: 115px;
+                margin: 0%;
             }
             
             #loginandshoppingcart{
@@ -323,13 +325,6 @@
                 border: 2px solid #1F2224;
                 background-color: #1F2224;
                 color: #FCEDD4;
-            }
-
-
-            /* will need to get an icon for this*/
-            #shoppingcart{
-                 
-                margin-right: 10px;
             }
 
             #navbarlinks{
@@ -503,8 +498,6 @@
                 color: #FCEDD4;
             }
 
-            
-
 
             footer{
                 border: 2px solid aqua;
@@ -534,15 +527,10 @@
                 color: #8DB8A8;
             }
 
-            .cart-button {
-                background: none;
-                border: none;
-                cursor: pointer;
-            }
-
             .cart-button img {
-                width: 30px; /* Adjust the width as needed */
+                width: 50px;
                 height: auto;
+                vertical-align: middle;
             }
             
       </style> 
@@ -550,9 +538,10 @@
     <body>
         
         <header>
-            <div id="logoimg">
-                <a href="/"><img src="./BookLogo.jpg" alt="logo"></a>
-            </div>
+           <h1>The Digital Book Corner</h1>
+                    <div id="logoimg">
+                        <a href="/"><img src="./BookLogo.jpg" alt="logo"></a>
+                    </div>
             <div id="loginandshoppingcart">
                    <div id="loginbutton">
                             <button class="login-button" onclick="location.href='/login'">Login</button>
@@ -653,39 +642,38 @@
             </div>
 
         </header>
+                <table class="shoppingCart">
+                    <tr>
+                        <th colspan="5"><h2>Shopping Cart</h2></th>
+                    </tr>
+                    <tr>
+                        <th>Book</th>
+ 
+                        <th>Quantity</th>
 
+                        <th>Price</th>
+  
+                        <th>Full Price</th>
+ 
+                        <th>Remove</th>
+                    </tr>
+                    <!-- You might have multiple rows in the table based on items in the cart -->
+                    {{#each cart}}
+                    <tr>
+                        <td>{{this.bookTitle}}</td>
 
-        
-            <table class="shoppingCart">
-                <tr>
-                    <th>Book</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
-                    <th>Full Price</th>
-                    <th>Remove</th>
-                </tr>
-                <tr>
-                    <td>
-                        {{this.BookTitle}}<br>
-                        {{this.Author}}
-                    </td>
-                    <td>
-                        <!-- Add a placeholder for quantity -->
-                        {{this.Quantity}}
-                    </td>
-                    <td>
-                        <!-- Add a placeholder for price -->
-                        {{this.Price}}
-                    </td>
-                    <td>
-                        <!-- Add a placeholder for full price -->
-                        {{this.FullPrice}}
-                    </td>
-                    <td>
-                        <button name="deleterecord" type="button" class="btn btn-danger btn-sm" onclick="remove_item()">Remove</button>
-                    </td>
-                </tr>
-            </table>
+                        <td>1</td>
+
+                        <td>{{this.price}}</td>
+  
+                        <td>{{this.price}}</td>
+
+                        <td>
+                            <button name="deleterecord" type="button" class="btn btn-danger btn-sm" onclick="remove_item()">Remove</button>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </table>
         <footer>
             <div id="footerlinkcolumn1">
                 <h3>Company</h3>
