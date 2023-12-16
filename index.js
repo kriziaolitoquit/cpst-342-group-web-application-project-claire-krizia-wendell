@@ -3,7 +3,7 @@ const axios = require('axios');
 const dbOperations = require('./database.js');
 const bodyParser = require('body-parser');
 const app = express();
-const port = 3000
+const port = process.env.PORT || 3000
 
 // Define a route that makes a call to an external REST API
 app.get('/external-api', async (req, res) => {
