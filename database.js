@@ -135,61 +135,8 @@ let getBookInFull = (BookTitle, Author, Price, ID,  res) => {
   });
 };
 
-//Display book price by range
-/*let getPriceRangeBookList = (priceEntry, res) => {
-  // Extract the selected price from the request body
-  var selectedPrice = priceEntry.selectedPrice;
-
-  // Perform a database query based on the selected price
-  var searchPrice = 'SELECT BookTitle FROM bookList WHERE Price = ?';
-
-  var titleBook = selectedPrice;
-
-  console.log(titleBook);
-
-  db.all(searchPrice, titleBook, function(err, rows) {
-      if (err) {
-          throw err;
-      } else {
-          console.log(rows);
-      }
-  });
-};*/
-
-//Insert a book into the database
-/*let createBook= (BookTitle, Author, Genre, PublishedYear, NumberOfCopies, res) =>{
-  var createBookItem = 'INSERT INTO bookList (BookTitle, Author, Genre, PublishedYear, NumberOfCopies) VALUES (?,?,?,?,?)'; //Parameterized Query
-  var params = [BookTitle, Author, Genre, PublishedYear, NumberOfCopies];
-  
-  db.run(createBookItem, params, function(err){
-
-      if(err){
-          return console.log(err.message);
-      }
-      
-      console.log("Book Item Created");
-      console.log(`Rows inserted ${this.changes}`);
-
-      getAllBookTitles(res);
-  });
-};*/
-
-
-/*let select_item =(recordToSelect, req) => {
-  var selectBookItem = 'SELECT FROM bookList WHERE ID =?';
-  var params = [recordToSelect];
-
-  db.run(selectBookItem, params, function(err){
-
-    if (err){
-      return console.log(err.message);
-
-    }
-  })
-}*/
-
 //Delete a book item from cart
-let remove_item = (recordToDelete, res) =>{
+/*let remove_item = (recordToDelete, res) =>{
     
   var deleteBookItem = 'DELETE FROM bookList WHERE ID = ?';
 
@@ -206,27 +153,8 @@ db.run(deleteBookItem, params, function(err){
 });
 
 getAllBookTitles(res);
-};
+};*/
 
-//Update Book List Item
-let updateBook = (BookTitle, Author, Genre, PublishedYear, NumberOfCopies, res) =>{
-
-  var updateBookItem = 'UPDATE bookList SET BookTitle = ?, Author = ?, Genre = ?, PublishedYear = ?, NumberOfCopies =?';
-
-  var params = [BookTitle, Author, Genre, PublishedYear, NumberOfCopies];
-
-  db.run(updateBookItem, params, function(err){
-      if(err){
-          return console.log(err.message);
-      }
-      
-      console.log("Book Item Updated");
-      console.log(`Rows updated ${this.changes}`);
-      getAllBookTitles(res);
-      
-  });
-  
-};
 
 module.exports = {getAllBookTitles, getSpecificBook, getGenreBookList, getDemographicsBookList, getYearRangeBookList,
-  remove_item, updateBook, getBookInFull}
+  getBookInFull}
